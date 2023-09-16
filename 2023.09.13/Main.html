@@ -5,47 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="0913.css">
+    <link rel="stylesheet" href="template.css">
+    <script src="sidenav.js"></script>
     <title>Weblap készítés</title>
 </head>
 <body>
-    <header>
-        <img src="UnivMiskolc_Main.jpg" alt="">
+    <div id="mySidenav" class="sidenav">
         <div>
-            <a href="orarend.html">
-                <div class="menu_div"><h2>Órarend</h2></div>
-            </a>
-            
-            <a href="Adatb1.html">
-                <div class="menu_div"><h2>Adatb1</h2></div>
-            </a>
-            
-            <a href="Adatb2.html">
-                <div class="menu_div"><h2>Adatb2</h2></div>
-            </a>
-            
-            <a href="XML.html">
-                <div class="menu_div"><h2>XML</h2></div>
-            </a>
-            
-            
-            
-            
+            <span onclick="openNav()">&#9776; open</span>
         </div>
-    </header>
-    <main>
+        <div>
+            <span class="closebtn" onclick="closeNav()">&times;</span>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
 
 
-        <b>Üdvözlöm a honlapon!</b>
-        <br><br>
 
-        Ezt a honlapot az XML kurzuson készítettem.
 
-        <br><br><br><br>
 
-        <b>Forrás:</b>
 
-        <iframe src="https://users.iit.uni-miskolc.hu/~kovacs/db1/db1.html" frameborder="0"></iframe>
-    </main>
-    <footer><small>&copy; Nyíri Levente, F023QC, 2023</small></footer>
+
+
+    <div id="main">
+    <header>
+            <img src="UnivMiskolc_Main.jpg" alt="">
+            <div>
+                <a href="orarend.html">
+                    <div class="menu_div"><h2>Órarend</h2></div>
+                </a>
+            
+                <a href="Adatb1.html">
+                    <div class="menu_div"><h2>Adatb1</h2></div>
+                </a>
+            
+                <a href="Adatb2.html">
+                    <div class="menu_div"><h2>Adatb2</h2></div>
+                </a>
+            
+                <a href="XML.html">
+                    <div class="menu_div"><h2>XML</h2></div>
+                </a>
+            
+            
+            
+            
+            </div>
+        </header>
+        <main>
+            <b>Üdvözlöm a honlapon!</b>
+            <br><br>
+
+            Ezt a honlapot az XML kurzuson készítettem.
+
+            <br><br><br><br>
+
+            <b>Forrás:</b>
+
+            <iframe src="https://users.iit.uni-miskolc.hu/~kovacs/db1/db1.html" frameborder="0"></iframe>
+        </main>
+        <footer><small>&copy; Nyíri Levente, F023QC, 2023</small></footer>
+    </div>
 </body>
 </html>
