@@ -4,37 +4,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="0913.css">
-    <title>Weblap készítés</title>
+    <link rel="stylesheet" href="template.css">
+    <link rel="icon" href="Resources/SideMenuIcons/xml-file-format-symbol.png">
+    <script src="sidenav.js"></script>
+    <title>XML Gyakorlat</title>
 </head>
 <body>
-    <header>
-        <img src="UnivMiskolc_Main.jpg" alt="">
-        <div>
-            <a href="orarend.html">
-                <div class="menu_div"><h2>Órarend</h2></div>
-            </a>
-            
-            <a href="Adatb1.html">
-                <div class="menu_div"><h2>Adatb1</h2></div>
-            </a>
-            
-            <a href="Adatb2.html">
-                <div class="menu_div"><h2>Adatb2</h2></div>
-            </a>
-            
-            <a href="XML.html">
-                <div class="menu_div"><h2>XML</h2></div>
-            </a>
-            
-            
-            
-            
+    <div id="mySidenav" class="sidenav">
+        <div class="buttons">
+            <span id="openbtn" onclick="openNav()">&#9776;</span>
+            <span id="closebtn" onclick="closeNav()">&#x2715;</span>
+
         </div>
-    </header>
-    <main>
-        <iframe src="https://users.iit.uni-miskolc.hu/~kovacs/db1/db1.html" frameborder="0"></iframe>
-    </main>
-    <footer><small>&copy; Nyíri Levente, F023QC, 2023</small></footer>
+            <div class="menu_item">
+                <a href="Main.html">
+                    <img src="Resources/SideMenuIcons/home.png" alt="">
+                    <div class="menu_item_text">
+                        Home
+                    </div>
+                </a>
+            </div>
+            <div class="menu_item">
+                <a href="adatb1.html">
+
+                    <img src="Resources/SideMenuIcons/sql-server.png" alt="">
+                    <div class="menu_item_text">
+                        Adatb 1
+                    </div>
+
+                </a>
+            </div>
+            <div class="menu_item">
+                <a href="adatb2.html">
+
+                    <img src="Resources/SideMenuIcons/database.png" alt="">
+                    <div class="menu_item_text">
+                        Adatb 2
+                    </div>
+
+                </a>
+            </div>
+            <div class="menu_item">
+                <a href="xml.html">
+
+                    <img src="Resources/SideMenuIcons/xml-file-format-symbol.png" alt="">
+                    <div class="menu_item_text">
+                        XML
+                    </div>
+
+                </a>
+            </div>
+            <div class="menu_item">
+                <a href="orarend.html">
+
+                    <img src="Resources/SideMenuIcons/clock.png" alt="">
+                    <div class="menu_item_text">
+                        Órarend
+                    </div>
+
+                </a>
+            </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div id="main_area">
+        <header>
+            <div class = "title">
+                <h2>Adatbázis rendszerek 1</h2>
+                INSERT,SELECT,DELETE...
+            </div>
+        </header>
+        <div class="b_down"></div>
+
+
+        <main>
+            <h1>Tematika</h1>
+            <ol>
+                <li>Adatkezelés alapfogalmai, adatstruktúra alapok, Adatperzisztencia szintjei: file, táblázatok és adatbázisok.  C file kezelés,Táblázatkezelő alapú perzisztencia, Excelben.</li>
+                <li>VBA programozás alapjai Excelben;  VBA alkalmazások OOP modellje. Excel adatkezelés haladó programozása, adatkezelési algoritmusok. Algoritmusok hatékonyság elemzése</li>
+                <li>Az adatbáziskezelés alapfogalmai; az adatbázis rendszer  DB fejlesztés lépései, A szemantikai  modellek áttekintése, ER adatmodell, EER és UML adatmodell</li>
+                <li>A relációs adatmodell áttekointése, A relációs struktúra (mező, reláció, DB) és integritási feltételek bemutatása.  Az ER modell konverziója relációs modellre. SQL DDL elemei</li>
+                <li>A relációs adatmodell műveleti része, relációs algebra elemei: szelekció, projekció, join, aggregáció, csoportképzés, kiterjesztés, halmazműveletek  SQL DML és DQL alapok.</li>
+                <li>SQL SELECT utasítás alapelemei elemei, kapcsolódás a relációs algebrához, az SQL SELECT szintaktikája. a SELECT utasítás további elemei. al-SELECT kezelése</li>
+                <li>Az SQL további elemei: speciális függvények adátum kezelésre, sztring kezelésre. Karakter kódkészletek.Tranzakció elemei, VIEW mechanizmus működése és parancsai</li>
+                <li>Az adatmodellezés problémái, anomáliák áttekintése. A mezők közötti függőségek szerepe. Normálformák. Dekompozíciós szabályok, normalizálás lépései</li>
+                <li>Az adatbáziskezelők fizikai architektúrája. A DBMS rendszerek működése: A fizikai szintű tárolási módszerek, indexelés áttekintése. B-fa index működése.</li>
+                <li>Adatbázisok védelmi modelljei, A DAC védelmi modell, szerepkörök alkalmazása; a MAC védelmi modell elemei. SQL védelmi parancsok használata</li>
+                <li>Esettanulmány: SQLLite. Az SQLite DBMS architektúra elemei, adminisztrációs alapok, SQLite SQL áttekintése</li>
+                <li>Esettanulmány: Oracle APEX keretrendszer. Az APEX DBMS architektúra elemei, adminisztrációs alapok, APEX SQL áttekintése</li>
+                <li>Összefoglalás</li>
+            </ol>
+
+            <h1>Tanatárgy oldala</h1>
+            <iframe src="https://www.iit.uni-miskolc.hu/kategoria-lista/tantargyi-adatlap/tantargyi-adatlap-adatbazisrendszerek-i.html" frameborder="0"></iframe>
+        </main>
+        <footer><small>&copy; Nyíri Levente, F023QC, 2023</small></footer>
+    </div>
 </body>
 </html>
