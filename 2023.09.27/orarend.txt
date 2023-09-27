@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+
+<ora id="" type="">
+	<kurzusnev></kurzusnev>
+
+	<okatato></oktato>
+	<idopont>
+		<kezdet></kezdet>
+		<veg></veg>
+	</idopont>
+</ora>
+

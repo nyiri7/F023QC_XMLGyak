@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mozi [
+        <!ELEMENT mozi (film*) >
+        <!ELEMENT film (rendezo+, szinesz+, iro+) >
+        <!ATTLIST film id ID #REQUIRED>
+        <!ATTLIST film mufaj (horror|comedy|a) "horror">
+
+        <!ELEMENT rendezo EMPTY >
+        <!ATTLIST rendezo id ID #REQUIRED>
+        <!ATTLIST rendezo nev CDATA #IMPLIED>
+
+        <!ELEMENT szinesz EMPTY >
+        <!ATTLIST szinesz id ID #REQUIRED>
+        <!ATTLIST szinesz nev CDATA #IMPLIED>
+
+        <!ELEMENT iro EMPTY >
+        <!ATTLIST iro id ID #REQUIRED>
+
+
+]>
+
+
+<mozi>
+    <film id="txn_mxn_2jb" mufaj="horror">
+        <rendezo id="nzk_4xnm_2jb" nev="alex"/>
+        <szinesz id="u5q_4xnm_2jb" nev="Madison_Ivy"/>
+        <iro  id="trv_4xnm_2jb"/>
+    </film>
+
+</mozi>
