@@ -1,0 +1,48 @@
+body{
+    background-color: blue;
+    color: black;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100vh;
+}
+
+#divtable{
+    margin-top: 3%;
+    background-color: white;
+    width: 80vw;
+    height: 80%;
+    padding: 1%;
+}
+h1{
+    text-align: center;
+}
+
+#fejlec{
+    background-color: black;
+    color: white;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    height: 90%;
+    text-align: center;
+}
+
+tr{
+    min-height: 8%;
+    height: 8%;
+}
+
+tr:hover{
+    background-color: gray;
+    color: white;
+}
+
+td{
+    width: 20%;
+    border: 1px solid;
+    margin: 0;
+    min-height: 100%;
+}

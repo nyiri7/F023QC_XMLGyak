@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<F023QC_konferencia>
+    <konferencia>
+        <cim>XML előadás</cim>
+        <hallgatók>
+            <hallgató>
+                <név>Nyíri Levente</név>
+                <lakcím>Miskolc</lakcím>
+            </hallgató>
+        </hallgatók>
+        <helyszín>Miskolc</helyszín>
+        <előadó>
+            <név>Dr. Bednarik László</név>
+            <adószám>12345678</adószám>
+            <lakcím>Miskolc</lakcím>
+        </előadó>
+        <dátum>2023.09.26</dátum>
+    </konferencia>
+
+
+    <konferencia>
+        <cim>Analízis előadás</cim>
+        <hallgatók>
+            <hallgató>
+                <név>Kovács Elemér Levente</név>
+                <lakcím>Miskolc</lakcím>
+            </hallgató>
+        </hallgatók>
+        <helyszín>Debrecen</helyszín>
+        <előadó>
+            <név>Kovács István</név>
+            <adószám>123132123</adószám>
+            <lakcím>Szeged</lakcím>
+        </előadó>
+        <dátum>2023.09.28</dátum>
+    </konferencia>
+
+    <konferencia>
+        <cim>Állatvilág előadás</cim>
+        <hallgatók>
+            <hallgató>
+                <név>Kiss Béla</név>
+                <lakcím>Budapest</lakcím>
+            </hallgató>
+        </hallgatók>
+        <helyszín>Budapest</helyszín>
+        <előadó>
+            <név>Nagy Antónia</név>
+            <adószám>43243242</adószám>
+            <lakcím>Győr</lakcím>
+        </előadó>
+        <dátum>2023.10.01</dátum>
+    </konferencia>
+
+    <konferencia>
+        <cim>Új épületek</cim>
+        <hallgatók>
+            <hallgató>
+                <név>Kocsi Levente</név>
+                <lakcím>Debrecen</lakcím>
+            </hallgató>
+        </hallgatók>
+        <helyszín>Budapest</helyszín>
+        <előadó>
+            <név>Kiss Kornél</név>
+            <adószám>64656466</adószám>
+            <lakcím>Veszprém</lakcím>
+        </előadó>
+        <dátum>2023.10.11</dátum>
+    </konferencia>
+
+    <konferencia>
+        <cim>Hálózati rendszerek</cim>
+        <hallgatók>
+            <hallgató>
+                <név>Kovács Aladár</név>
+                <lakcím>Pécs</lakcím>
+            </hallgató>
+        </hallgatók>
+        <helyszín>Győr</helyszín>
+        <előadó>
+            <név>Takács Judit</név>
+            <adószám>876876678</adószám>
+            <lakcím>Miskolc</lakcím>
+        </előadó>
+        <dátum>2023.12.03</dátum>
+    </konferencia>
+
+</F023QC_konferencia>
