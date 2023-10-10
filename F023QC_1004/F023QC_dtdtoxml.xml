@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE F023QC_modell SYSTEM "F023QC_ertodtd.dtd">
+
+<F023QC_modell>
+    <A a="a1">
+        <b>
+            <d></d>
+            <e></e>
+        </b>
+        <c>
+            <d></d>
+            <e></e>
+        </c>
+    </A>
+    <B a="a2" c="c1">
+        <b>
+            <d></d>
+            <e></e>
+        </b>
+    </B>
+    <C a="c1">
+        <b>
+            <d></d>
+            <e></e>
+        </b>
+    </C>
+    <AB Aref="a1" Bref="a2">
+        <c>
+            <d></d>
+            <e></e>
+        </c>
+    </AB>
+</F023QC_modell>

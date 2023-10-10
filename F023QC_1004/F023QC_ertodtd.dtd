@@ -1,0 +1,21 @@
+<!ELEMENT F023QC_modell (A, B, C, AB)>
+
+<!ELEMENT A (b, c)>
+<!ATTLIST A a ID #REQUIRED>
+    <!ELEMENT b (d,e)*>
+        <!ELEMENT x (#PCDATA)>
+        <!ELEMENT y (#PCDATA)>
+    <!ELEMENT c (d,e)>
+        <!ELEMENT d (#PCDATA)>
+        <!ELEMENT e (#PCDATA)>
+
+<!ELEMENT B (b)>
+<!ATTLIST B a ID #REQUIRED>
+<!ATTLIST B c IDREF #REQUIRED>
+
+<!ELEMENT C (b)>
+<!ATTLIST C a ID #REQUIRED>
+
+<!ELEMENT AB (c)>
+<!ATTLIST AB Aref IDREF #REQUIRED>
+<!ATTLIST AB Bref IDREF #REQUIRED>
