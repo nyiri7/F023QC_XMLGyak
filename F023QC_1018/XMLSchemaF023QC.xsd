@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Simple-->
+    <xs:simpleType name="fizetes">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="140000" />
+            <xs:maxInclusive value="99999999" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="adoszam">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(\d{8})-(\d)-(\d{2})" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="diakigazolvanyszam">
+        <xs:restriction base="xs:string">
+            <xs:length value="11" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Complex-->
+    <xs:complexType name="festtype">
+        <xs:sequence>
+            <xs:element ref="nev" />
+            <xs:element ref="helyszin" />
+            <xs:element ref="ev" />
+        </xs:sequence>
+        <xs:attribute name="FESZ_ID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+    <xs:complexType name="owner">
+        <xs:sequence>
+            <xs:element ref="nev" />
+            <xs:element ref="adoszam" />
+            <xs:element ref="alapitas" />
+            <xs:element ref="bevetel" />
+        </xs:sequence>
+        <xs:attribute name="T_ID" type="xs:integer" use="required" />
+        <xs:attribute name="fesztival" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+    <xs:complexType name="fellepo">
+        <xs:sequence>
+            <xs:element ref="nev" />
+            <xs:element ref="orszag" />
+            <xs:element ref="dij" />
+        </xs:sequence>
+        <xs:attribute name="FEL_ID" type="xs:integer" use="required" />
+        <xs:attribute name="fesztival" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+    <xs:complexType name="bar">
+        <xs:sequence>
+            <xs:element ref="nev" />
+            <xs:element ref="ital" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element ref="ceg" />
+        </xs:sequence>
+        <xs:attribute name="B_ID" type="xs:integer" use="required" />
+        <xs:attribute name="fesztival" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+    <xs:complexType name="alkalmazott">
+        <xs:sequence>
+            <xs:element ref="nev" />
+            <xs:element ref="muszak" minOccurs="1" maxOccurs="4" />
+            <xs:element ref="fizetes" />
+        </xs:sequence>
+        <xs:attribute name="A_ID" type="xs:integer" use="required" />
+        <xs:attribute name="munkahely" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="home">
+        <xs:sequence>
+            <xs:element name="telepules" type="xs:string" />
+            <xs:element name="utca" type="xs:string" />
+            <xs:element name="hazszam" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="resztvevo">
+        <xs:sequence>
+            <xs:element ref="nev" />
+            <xs:element ref="diakigazolvany" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="lakcim" type="home">
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="R_ID" type="xs:integer" use="required" />
+        <xs:attribute name="fesztival" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+    <xs:complexType name="l_exam">
+        <xs:sequence>
+            <xs:element ref="nyelv" />
+            <xs:element ref="szint" />
+        </xs:sequence>
+        <xs:attribute name="NY_ID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+    <xs:complexType name="kozvelemeny">
+        <xs:sequence>
+            <xs:element ref="kerdezo"/>
+        </xs:sequence>
+        <xs:attribute name="K_ID" type="xs:integer" use="required" />
+        <xs:attribute name="megkerdezett" type="xs:integer" use="required" />
+        <xs:attribute name="nyelvtudas" type="xs:integer" use="required" />
+    </xs:complexType>
+
+
+
+    <!-- Tulajdonos-->
+    <xs:element name="adoszam" type="adoszam" />
+    <xs:element name="alapitas" type="xs:gYear" />
+    <xs:element name="bevetel" type="xs:integer" />
+
+    <!-- Fellepo-->
+    <xs:element name="orszag" type="xs:string" />
+    <xs:element name="dij" type="xs:int" />
+
+    <!-- Alkalmazott-->
+    <xs:element name="muszak" type="xs:string" />
+    <xs:element name="fizetes" type="fizetes" />
+
+    <!-- Bar-->
+    <xs:element name="ital" type="xs:string" />
+    <xs:element name="ceg" type="xs:string" />
+
+    <!-- Fesztival-->
+    <xs:element name="nev" type="xs:string" />
+    <xs:element name="helyszin" type="xs:string" />
+    <xs:element name="ev" type="xs:gYear" />
+
+    <!-- Resztvevo-->
+    <xs:element name="diakigazolvany" type="diakigazolvanyszam" />
+
+    <!-- Kozvelemeny-->
+    <xs:element name="kerdezo" type="xs:string" />
+
+    <!-- Nyelvtudas-->
+    <xs:element name="nyelv" type="xs:string" />
+    <xs:element name="szint" type="xs:string" />
+
+    <xs:element name="Fesztival_F023QC">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Fesztival" type="festtype" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Tulajdonos" type="owner" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Fellepo" type="fellepo" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Bar" type="bar" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Alkalmazott" type="alkalmazott" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Resztvevo" type="resztvevo" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Nyelvtudas" type="l_exam" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Kozvelemeny" type="kozvelemeny" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <!-- PK -->
+        <xs:key name="fest_key">
+            <xs:selector xpath="Fesztival"/>
+            <xs:field xpath="@FESZ_ID"/>
+        </xs:key>
+        <xs:key name="owner_key">
+            <xs:selector xpath="Tulajdonos"/>
+            <xs:field xpath="@T_ID"/>
+        </xs:key>
+        <xs:key name="fellepo_key">
+            <xs:selector xpath="Fellepo"/>
+            <xs:field xpath="@FEL_ID"/>
+        </xs:key>
+        <xs:key name="bar_key">
+            <xs:selector xpath="Bar"/>
+            <xs:field xpath="@B_ID"/>
+        </xs:key>
+        <xs:key name="alkalmazott_key">
+            <xs:selector xpath="Alkalmazott"/>
+            <xs:field xpath="@A_ID"/>
+        </xs:key>
+        <xs:key name="resztvevo_key">
+            <xs:selector xpath="Resztvevo"/>
+            <xs:field xpath="@R_ID"/>
+        </xs:key>
+        <xs:key name="l_exam_key">
+            <xs:selector xpath="Nyelvtudas"/>
+            <xs:field xpath="@NY_ID"/>
+        </xs:key>
+        <xs:key name="kozvelemeny_key">
+            <xs:selector xpath="Kozvelemeny"/>
+            <xs:field xpath="@K_ID"/>
+        </xs:key>
+
+        <!-- FK-->
+        <xs:keyref name="f_tulaj_kulcs" refer="fest_key">
+            <xs:selector xpath="Tulajdonos"/>
+            <xs:field xpath="@fesztival"/>
+        </xs:keyref>
+        <xs:keyref name="f_bar_key" refer="fest_key">
+            <xs:selector xpath="Bar"/>
+            <xs:field xpath="@fesztival"/>
+        </xs:keyref>
+        <xs:keyref name="f_resztvevo_key" refer="fest_key">
+            <xs:selector xpath="Resztvevo"/>
+            <xs:field xpath="@fesztival"/>
+        </xs:keyref>
+        <xs:keyref name="f_fellepo_key" refer="fest_key">
+            <xs:selector xpath="Fellepo"/>
+            <xs:field xpath="@fesztival"/>
+        </xs:keyref>
+        <xs:keyref name="b_alkalmazott_key" refer="bar_key">
+            <xs:selector xpath="Alkalmazott"/>
+            <xs:field xpath="@munkahely"/>
+        </xs:keyref>
+        <xs:keyref name="l_exam_kozvelemeny_key" refer="l_exam_key">
+            <xs:selector xpath="Kozvelemeny"/>
+            <xs:field xpath="@nyelvtudas"/>
+        </xs:keyref>
+        <xs:keyref name="resztvevo_kozvelemeny_key" refer="resztvevo_key">
+            <xs:selector xpath="Kozvelemeny"/>
+            <xs:field xpath="@megkerdezett"/>
+        </xs:keyref>
+
+        <!-- Kapcsolat-->
+        <xs:unique name="fesztival_tulaj">
+            <xs:selector xpath="tulajdonos"/>
+            <xs:field xpath="@fesztival"/>
+        </xs:unique>
+    </xs:element>
+</xs:schema>

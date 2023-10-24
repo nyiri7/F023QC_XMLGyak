@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-model href="XMLSchemaF023QC.xsd"?>
+<Fesztival_F023QC>
+
+        
+    <Fesztival FESZ_ID="2">
+        <nev>Balaton Sound</nev>
+        <helyszin>Zamardi</helyszin>
+        <ev>2023</ev>
+    </Fesztival>
+    <Fesztival FESZ_ID="1">
+        <nev>CAMPUS Fesztival</nev>
+        <helyszin>DEBRECEN</helyszin>
+        <ev>2023</ev>
+    </Fesztival>
+
+    <Tulajdonos T_ID="2" fesztival="2">
+        <nev>Never Say Never</nev>
+        <adoszam>57964230-5-64</adoszam>
+        <alapitas>1993</alapitas>
+        <bevetel>98045695</bevetel>
+    </Tulajdonos>
+    <Tulajdonos T_ID="1" fesztival="1">
+        <nev>Debreceni Campus Nonprofit Kozhasznu Kft</nev>
+        <adoszam>21454167-2-09</adoszam>
+        <alapitas>2007</alapitas>
+        <bevetel>4820619</bevetel>
+    </Tulajdonos>
+
+        
+    <Fellepo FEL_ID="2" fesztival="2">
+        <nev>Blasterjaxx</nev>
+        <orszag>Hollandia</orszag>
+        <dij>9000000</dij>
+    </Fellepo>
+    <Fellepo FEL_ID="1" fesztival="1">
+        <nev>Tankcsapda</nev>
+        <orszag>Magyarorszag</orszag>
+        <dij>70000</dij>
+    </Fellepo>
+
+    <Bar B_ID="1" fesztival="1">
+        <nev>Nagy Sator</nev>
+        <ital>Soproni</ital>
+        <ital>Borsodi sor</ital>
+        <ceg>Debreceni Campus Nonprofit Kozhasznu Kft</ceg>
+    </Bar>
+    <Bar B_ID="2" fesztival="2">
+        <nev>Rave sator</nev>
+        <ital>Viz</ital>
+        <ital>Borsodi</ital>
+        <ital>Soproni</ital>
+        <ceg>Borsodi</ceg>
+    </Bar>
+
+    <Alkalmazott A_ID="1" munkahely="1">
+        <nev>Kis Istvan</nev>
+        <muszak>8-12</muszak>
+        <muszak>20-24</muszak>
+        <fizetes>150000</fizetes>
+    </Alkalmazott>
+    <Alkalmazott A_ID="2" munkahely="2">
+        <nev>Kovacs Ferenc</nev>
+        <muszak>16-20</muszak>
+        <fizetes>140000</fizetes>
+    </Alkalmazott>
+
+    <Resztvevo R_ID="21" fesztival="1">
+        <nev>Kovacs Bela</nev>
+        <diakigazolvany>71678223444</diakigazolvany>
+        <lakcim>
+            <telepules>Miskolc</telepules>
+            <utca>Aba</utca>
+            <hazszam>1</hazszam>
+        </lakcim>
+    </Resztvevo>
+    <Resztvevo R_ID="2" fesztival="2">
+        <nev>Nagy Levente</nev>
+        <lakcim>
+            <telepules>Debrecen</telepules>
+            <utca>Korosi</utca>
+            <hazszam>11</hazszam>
+        </lakcim>
+    </Resztvevo>
+
+    <Nyelvtudas NY_ID="1">
+        <nyelv>angol</nyelv>
+        <szint>B2</szint>
+    </Nyelvtudas>
+    
+    <Nyelvtudas NY_ID="2">
+        <nyelv>nemet</nyelv>
+        <szint>C1</szint>
+    </Nyelvtudas>
+
+    <Kozvelemeny K_ID="1" megkerdezett="21" nyelvtudas="1">
+        <kerdezo>Nagy Peter</kerdezo>
+    </Kozvelemeny>
+
+    <Kozvelemeny K_ID="2" megkerdezett="2" nyelvtudas="2">
+        <kerdezo>Kovacs Zsigmond</kerdezo>
+    </Kozvelemeny>
+
+
+</Fesztival_F023QC>
+
+    

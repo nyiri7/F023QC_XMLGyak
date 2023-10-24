@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?xml-model href="F023QC_kurzusfelvetel.xsd"?>
+<F023QC_kurzusfelvetel tanev="2023/24_1" egyetem="ME">
+    <hallgato>
+        <hnev>Nyíri Levente</hnev>
+        <szulev>2002</szulev>
+        <szak evf="5">Mérnökinformatikus</szak>
+    </hallgato>
+    <kurzusok>
+        <kurzus id="GEIAL336-B" jovahagyas="">
+            <kurzusnev>Web-es alkalmazások (C#)</kurzusnev>
+            <kredit>5</kredit>
+            <hely>In 101</hely>
+            <idopont>Kedd 14:00-18:00</idopont>
+            <oktato>Árvai László Lajos</oktato>
+            <oraado>Dr. Mileff Péter</oraado>
+        </kurzus>
+        <kurzus id="GEIAL332-B" jovahagyas="">
+            <kurzusnev> Adatkezelés XML környezetben</kurzusnev>
+            <kredit>5</kredit>
+            <hely>XXXII.</hely>
+            <idopont>Kedd 12:00-14:00</idopont>
+            <oktato>Dr. Bednarik László</oktato>
+        </kurzus>
+
+        <kurzus id="GEIAK130-B" jovahagyas="">
+            <kurzusnev>Mesterséges intelligencia alapok</kurzusnev>
+            <kredit>5</kredit>
+            <hely>XXXII.</hely>
+            <idopont>Kedd 10:00-12:00</idopont>
+            <oktato>Dr. Kunné Tamás Judit</oktato>
+            <oraado>Fazekas Levente Áron</oraado>
+        </kurzus>
+
+        <kurzus id="GEIAL331-B" jovahagyas="">
+            <kurzusnev>Webtechnológiák</kurzusnev>
+            <kredit>5</kredit>
+            <hely>XXX.</hely>
+            <idopont>Hétfő 14:00-16:00</idopont>
+            <oktato>Agárdi Anita</oktato>
+        </kurzus>
+        <kurzus id="GEIAL30A-B" jovahagyas="">
+            <kurzusnev>Windows rendszergazda</kurzusnev>
+            <kredit>5</kredit>
+            <hely>Inf. 102</hely>
+            <idopont>Szerda 16:00-20:00</idopont>
+            <oktato>Wagner György</oktato>
+        </kurzus>
+
+        <kurzus id="GEIAK120-B" jovahagyas="">
+            <kurzusnev>Integrált Vállalati Rendszerek</kurzusnev>
+            <kredit>5</kredit>
+            <hely>X. A1 II. em 218</hely>
+            <idopont>Szerda 12-16 óra</idopont>
+            <oktato>Dr. Dadvandipour Samad</oktato>
+            <oraado>Dr. Kulcsárné Dr. Forrai Mónika</oraado>
+        </kurzus>
+
+    </kurzusok>
+</F023QC_kurzusfelvetel>
