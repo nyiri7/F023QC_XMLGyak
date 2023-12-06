@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="F033QC_orarend">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="ora">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="targy" type="xs:string" />
+              <xs:element name="idopont">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="nap" type="xs:string" />
+                    <xs:element name="tol" type="xs:string" />
+                    <xs:element name="ig" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="helyszin" type="xs:string" />
+              <xs:element name="oktato" type="xs:string" />
+              <xs:element name="szak" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:positiveInteger" use="required" />
+            <xs:attribute name="tipus" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

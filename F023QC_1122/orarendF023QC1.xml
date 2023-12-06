@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><F033QC_orarend xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="F023QC_orarend.xsd">
+
+
+<!--Hetfõ-->
+
+<ora id="1" tipus="eloadas">
+    <targy>WEB technológiák 1.</targy>
+    <idopont>
+        <nap>Hétfõ</nap>
+        <tol>14:00</tol>
+        <ig>16:00</ig>
+    </idopont>
+    <helyszin>32. elõadó</helyszin>
+    <oktato>Agárdi Anita</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="2" tipus="gyakorlat">
+    <targy>alma</targy>
+    <idopont>
+        <nap>Hétfõ</nap>
+        <tol>16:00</tol>
+        <ig>18:00</ig>
+    </idopont>
+    <helyszin>Inf/202</helyszin>
+    <oktato>elõadó</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<!--Kedd-->
+
+<ora id="3" tipus="eloadas">
+    <targy>Mesterséges Inteligencia</targy>
+    <idopont>
+        <nap>Kedd</nap>
+        <tol>10:00</tol>
+        <ig>12:00</ig>
+    </idopont>
+    <helyszin>XXXII</helyszin>
+    <oktato>Kunné Dr. Tamás Judit</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="4" tipus="eloadas">
+    <targy>Adatkezelés XML-ben</targy>
+    <idopont>
+        <nap>Kedd</nap>
+        <tol>12:00</tol>
+        <ig>14:00</ig>
+    </idopont>
+    <helyszin>XXXII</helyszin>
+    <oktato>Dr. Bednarik László</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="5" tipus="eloadas">
+    <targy>WEB-es alkalmazások C#</targy>
+    <idopont>
+        <nap>Kedd</nap>
+        <tol>14:00</tol>
+        <ig>16:00</ig>
+    </idopont>
+    <helyszin>Inf/101</helyszin>
+    <oktato>Árvai László Lajos</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="6" tipus="gyakorlat">
+    <targy>WEB-es alkalmazások C#</targy>
+    <idopont>
+        <nap>Kedd</nap>
+        <tol>16:00</tol>
+        <ig>18:00</ig>
+    </idopont>
+    <helyszin>Inf/101</helyszin>
+    <oktato>Árvai László Lajos</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<!--Szerda-->
+
+<ora id="7" tipus="gyakorlat">
+    <targy>Adatkezelés XML-ben</targy>
+    <idopont>
+        <nap>Szerda</nap>
+        <tol>10:00</tol>
+        <ig>12:00</ig>
+    </idopont>
+    <helyszin>Inf/101</helyszin>
+    <oktato>Dr. Bednarik László</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="8" tipus="eloadas">
+    <targy>Integrált vállalati rendszerek</targy>
+    <idopont>
+        <nap>Szerda</nap>
+        <tol>12:00</tol>
+        <ig>14:00</ig>
+    </idopont>
+    <helyszin>X</helyszin>
+    <oktato>Dr. Samad Dadvandipour</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="9" tipus="gyakorlat">
+    <targy>Integrált vállalati rendszerek</targy>
+    <idopont>
+        <nap>Szerda</nap>
+        <tol>14:00</tol>
+        <ig>16:00</ig>
+    </idopont>
+    <helyszin>Inf/15</helyszin>
+    <oktato>Dr. Kulcsárné Dr. Forrai Mónika</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="10" tipus="eloadas">
+    <targy>Windows Rendszergazda</targy>
+    <idopont>
+        <nap>Szerda</nap>
+        <tol>16:00</tol>
+        <ig>18:00</ig>
+    </idopont>
+    <helyszin>Inf/101</helyszin>
+    <oktato>Wagner György</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+<ora id="11" tipus="gyakorlat">
+    <targy>Windows Rendszergazda</targy>
+    <idopont>
+        <nap>Szerda</nap>
+        <tol>18:00</tol>
+        <ig>20:00</ig>
+    </idopont>
+    <helyszin>Inf/101</helyszin>
+    <oktato>Wagner György</oktato>
+    <szak>G3BIW</szak>
+</ora>
+
+
+
+<!--Csütörtök-->
+<ora id="12" tipus="gyakorlat">
+    <targy>Mesterséges intelligencia</targy>
+    <idopont>
+        <nap>Csütörtök</nap>
+        <tol>10:00</tol>
+        <ig>12:00</ig>
+    </idopont>
+    <helyszin>I</helyszin>
+    <oktato>Fazekas Levente</oktato>
+    <szak>G3BIW</szak>
+</ora>
+</F033QC_orarend>
