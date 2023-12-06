@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+    <body>
+       <table style="border-collapse: collapse;">
+          <tr style="background-color: greenyellow;">
+             <th>ID</th>
+             <th>Tipus</th>
+             <th>Targy</th>
+             <th>Idopont</th>
+             <th>Helyszin</th>
+             <th>Oktato</th>
+             <th>Szak</th>
+          </tr>
+          <tr>
+             <td>GEIAL336-B</td>
+             <td/>
+             <td>5</td>
+             <td>In 101</td>
+             <td>Kedd 14:00-18:00</td>
+             <td>Árvai László Lajos</td>
+             <td>Dr. Mileff Péter</td>
+          </tr>
+          <tr>
+             <td>GEIAL332-B</td>
+             <td/>
+             <td>5</td>
+             <td>XXXII.</td>
+             <td>Kedd 12:00-14:00</td>
+             <td>Dr. Bednarik László</td>
+             <td/>
+          </tr>
+          <tr>
+             <td>GEIAK130-B</td>
+             <td/>
+             <td>5</td>
+             <td>XXXII.</td>
+             <td>Kedd 10:00-12:00</td>
+             <td>Dr. Kunné Tamás Judit</td>
+             <td>Fazekas Levente Áron</td>
+          </tr>
+          <tr>
+             <td>GEIAL331-B</td>
+             <td/>
+             <td>5</td>
+             <td>XXX.</td>
+             <td>Hétfő 14:00-16:00</td>
+             <td>Agárdi Anita</td>
+             <td/>
+          </tr>
+          <tr>
+             <td>GEIAL30A-B</td>
+             <td/>
+             <td>5</td>
+             <td>Inf. 102</td>
+             <td>Szerda 16:00-20:00</td>
+             <td>Wagner György</td>
+             <td/>
+          </tr>
+          <tr>
+             <td>GEIAK120-B</td>
+             <td/>
+             <td>5</td>
+             <td>X. A1 II. em 218</td>
+             <td>Szerda 12-16 óra</td>
+             <td>Dr. Dadvandipour Samad</td>
+             <td>Dr. Kulcsárné Dr. Forrai Mónika</td>
+          </tr>
+       </table>
+    </body>
+ </html>
