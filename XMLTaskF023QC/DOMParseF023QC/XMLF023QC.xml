@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<F023QC_rendelesek xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="XMLSchemaF023QC.xsd">
+    <Rendelés rendelésID ="1" étteremID="1">
+        <megjegyzés>A kutya harap!</megjegyzés>
+        <rendelés_ideje>12:00</rendelés_ideje>
+        <teljes_ár>15000</teljes_ár>
+    </Rendelés>
+    <Rendelés rendelésID ="2" étteremID="1">
+        <rendelés_ideje>14:32</rendelés_ideje>
+        <teljes_ár>3000</teljes_ár>
+    </Rendelés>
+    <Rendelés rendelésID ="3" étteremID="2">
+        <megjegyzés>Ételalergia</megjegyzés>
+        <rendelés_ideje>14:32</rendelés_ideje>
+        <teljes_ár>3700</teljes_ár>
+    </Rendelés>
+    <Rendelés rendelésID ="4" étteremID="3">
+        <megjegyzés>Ételalergia</megjegyzés>
+        <rendelés_ideje>14:32</rendelés_ideje>
+        <teljes_ár>10000</teljes_ár>
+    </Rendelés>
+    <!-- Éttermek -->
+    <Étterem étteremID="1">
+        <cím>3528 Miskolc Csokonai Vitéz Mihály utca 40.</cím>
+        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
+        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
+        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
+        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
+        <elérhetőség>csarda@etterem.hu</elérhetőség>
+    </Étterem>
+    <Étterem étteremID="2">
+        <cím>3525 Miskolc Szemere Bertalan Utca 3.</cím>
+        <nyitvatartás>Hétfő 7:00-18:00</nyitvatartás>
+        <nyitvatartás>Kedd 7:00-18:00</nyitvatartás>
+        <nyitvatartás>Szerda 7:00-18:00</nyitvatartás>
+        <nyitvatartás>Csütörtök 7:00-18:00</nyitvatartás>
+        <nyitvatartás>Péntek 7:00-18:00</nyitvatartás>
+        <nyitvatartás>Szombat 8:00-18:00</nyitvatartás>
+        <nyitvatartás>Vasárnap 10:00-15:00</nyitvatartás>
+        <elérhetőség>https://falankfanny.hu/</elérhetőség>
+    </Étterem>
+    <Étterem étteremID="3">
+        <cím>3526 Miskolc, Petőfi Tér 1.</cím>
+        <nyitvatartás>Hétfő 8:00-23:00</nyitvatartás>
+        <nyitvatartás>Kedd 8:00-23:00</nyitvatartás>
+        <nyitvatartás>Szerda 8:00-23:00</nyitvatartás>
+        <nyitvatartás>Csütörtök 8:00-23:00</nyitvatartás>
+        <nyitvatartás>Péntek 8:00-23:00</nyitvatartás>
+        <elérhetőség>http://www.barkafood.hu/</elérhetőség>
+    </Étterem>
+    <!-- Futárok -->
+    <Futár futárID="1" étteremID="1">
+        <név>Nagy Milán</név>
+        <telefonszám>0630 320 4870</telefonszám>
+        <elérhető>0</elérhető>
+        <típus>Biciklis</típus>
+    </Futár>
+    <Futár futárID="2" étteremID="1">
+        <név>Kovács Aladár</név>
+        <telefonszám>0630 560 8893</telefonszám>
+        <elérhető>0</elérhető>
+        <típus>Autós</típus>
+    </Futár>
+    <Futár futárID="3" étteremID="1">
+        <név>Kiss Béla</név>
+        <telefonszám>0630 632 4856</telefonszám>
+        <elérhető>1</elérhető>
+        <típus>Autós</típus>
+    </Futár>
+    <Futár futárID="4" étteremID="2">
+        <név>Varga Roland</név>
+        <telefonszám>0620 569 4236</telefonszám>
+        <elérhető>1</elérhető>
+        <típus>Rolleres</típus>
+    </Futár>
+    <Futár futárID="5" étteremID="2">
+        <név>Kovács Péter</név>
+        <telefonszám>0646 329 4568</telefonszám>
+        <elérhető>0</elérhető>
+        <típus>Biciklis</típus>
+    </Futár>
+    <Futár futárID="6" étteremID="3">
+        <név>Szabó Éva</név>
+        <telefonszám>0620 563 7821</telefonszám>
+        <elérhető>1</elérhető>
+        <típus>Autós</típus>
+    </Futár>
+    <!-- Rendelés-termék kapcsolat -->
+    <RT rendelésID="1" termékID="1">
+        <mennyiség>1</mennyiség>
+        <nk_összetevő>Répa</nk_összetevő>
+    </RT>
+    <RT rendelésID="1" termékID="3">
+        <mennyiség>4</mennyiség>
+    </RT>
+    <RT rendelésID="1" termékID="5">
+        <mennyiség>1</mennyiség>
+        <nk_összetevő>Porcukor</nk_összetevő>
+    </RT>
+    <RT rendelésID="2" termékID="1">
+        <mennyiség>1</mennyiség>
+        <nk_összetevő>Zeller</nk_összetevő>
+    </RT>
+    <RT rendelésID="2" termékID="5">
+        <mennyiség>1</mennyiség>
+        <nk_összetevő>Porcukor</nk_összetevő>
+    </RT>
+
+    <RT rendelésID="3" termékID="2">
+        <mennyiség>5</mennyiség>
+        <nk_összetevő>Liszt</nk_összetevő>
+        <nk_összetevő>Vanília Kivonat</nk_összetevő>
+    </RT>
+    <RT rendelésID="3" termékID="4">
+        <mennyiség>4</mennyiség>
+    </RT>
+    <RT rendelésID="4" termékID="5">
+        <mennyiség>5</mennyiség>
+        <nk_összetevő>Só</nk_összetevő>
+        <nk_összetevő>Porcukor</nk_összetevő>
+        <nk_összetevő>Tejföl</nk_összetevő>
+    </RT>
+    <!-- Termékek -->
+    <Termék termékID="1">
+        <név>Húsleves</név>
+        <ár>1000</ár>
+        <elkészítési_idő>30 perc</elkészítési_idő>
+        <összetevők>sárgarépa</összetevők>
+        <összetevők>fehérrépa</összetevők>
+        <összetevők>karalábé</összetevők>
+        <összetevők>zeller</összetevők>
+        <összetevők>vöröshagyma</összetevők>
+        <összetevők>paprika</összetevők>
+        <összetevők>petrezselyem</összetevők>
+        <összetevők>só</összetevők>
+        <összetevők>bors</összetevők>
+        <összetevők>tészta</összetevők>
+    </Termék>
+    <Termék termékID="2">
+        <név>Brownie</név>
+        <ár>500</ár>
+        <elkészítési_idő>15 perc</elkészítési_idő>
+        <összetevők>liszt</összetevők>
+        <összetevők>só</összetevők>
+        <összetevők>kakaópor</összetevők>
+        <összetevők>étcsokoládé</összetevők>
+        <összetevők>vaj</összetevők>
+        <összetevők>nutella</összetevők>
+        <összetevők>tojás</összetevők>
+        <összetevők>cukor</összetevők>
+        <összetevők>vanília kivonat</összetevők>
+    </Termék>
+    <Termék termékID="3">
+        <név>Omlós libacomb</név>
+        <ár>4000</ár>
+        <elkészítési_idő>130 perc</elkészítési_idő>
+        <összetevők>libacomb</összetevők>
+        <összetevők>tengeri só</összetevők>
+    </Termék>
+    <Termék termékID="4">
+        <név>Muffin</név>
+        <ár>300</ár>
+        <elkészítési_idő>30 perc</elkészítési_idő>
+        <összetevők>tojás</összetevők>
+        <összetevők>cukor</összetevők>
+        <összetevők>vaj</összetevők>
+        <összetevők>tej</összetevők>
+        <összetevők>liszt</összetevők>
+        <összetevők>só</összetevők>
+        <összetevők>sütőpor</összetevők>
+        <összetevők>vaníliás cukor</összetevők>
+    </Termék>
+    <Termék termékID="5">
+        <név>Túrógombóc</név>
+        <ár>2000</ár>
+        <elkészítési_idő>25 perc</elkészítési_idő>
+        <összetevők>túró</összetevők>
+        <összetevők>tojás</összetevők>
+        <összetevők>búzadara</összetevők>
+        <összetevők>só</összetevők>
+        <összetevők>szódabikarbóna</összetevők>
+        <összetevők>zsemlemorzsa</összetevők>
+        <összetevők>olaj</összetevők>
+        <összetevők>porcukor</összetevők>
+        <összetevők>tejföl</összetevők>
+    </Termék>
+    <!-- Bankkártyák -->
+    <Bankkártya kártyaszám="1174859659985563" vevőID="1">
+        <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
+        <lejárati_dátum>12/26</lejárati_dátum>
+        <biztonsági_kód>056</biztonsági_kód>
+        <típus>Mastercard</típus>
+    </Bankkártya>
+    <Bankkártya kártyaszám="1174859655585888" vevőID="1">
+        <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
+        <lejárati_dátum>05/28</lejárati_dátum>
+        <biztonsági_kód>356</biztonsági_kód>
+        <típus>Visa</típus>
+    </Bankkártya>
+    <Bankkártya kártyaszám="1174865851185111" vevőID="1">
+        <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
+        <lejárati_dátum>12/23</lejárati_dátum>
+        <biztonsági_kód>111</biztonsági_kód>
+        <típus>Mastercard</típus>
+    </Bankkártya>
+    <Bankkártya kártyaszám="1176834769216856" vevőID="2">
+        <kártyán_szereplő_név>Nagyné Kovács Rebeka</kártyán_szereplő_név>
+        <lejárati_dátum>12/23</lejárati_dátum>
+        <biztonsági_kód>111</biztonsági_kód>
+        <típus>Visa</típus>
+    </Bankkártya>
+    <Bankkártya kártyaszám="1179863452169933" vevőID="2">
+        <kártyán_szereplő_név>Nagy Balázs</kártyán_szereplő_név>
+        <lejárati_dátum>02/27</lejárati_dátum>
+        <biztonsági_kód>986</biztonsági_kód>
+        <típus>Visa</típus>
+    </Bankkártya>
+    <Bankkártya kártyaszám="1175453336278779" vevőID="3">
+        <kártyán_szereplő_név>Kis István</kártyán_szereplő_név>
+        <lejárati_dátum>01/29</lejárati_dátum>
+        <biztonsági_kód>494</biztonsági_kód>
+        <típus>Mastercard</típus>
+    </Bankkártya>
+    <Bankkártya kártyaszám="1171154896532478" vevőID="4">
+        <kártyán_szereplő_név>Varga Iván</kártyán_szereplő_név>
+        <lejárati_dátum>01/24</lejárati_dátum>
+        <biztonsági_kód>555</biztonsági_kód>
+        <típus>Visa</típus>
+    </Bankkártya>
+    <!-- Címek -->
+    <Cím vevőID="1">
+        <irányítószám>3528</irányítószám>
+        <közterület_neve>Csokonai Vitéz Mihály</közterület_neve>
+        <közterület_megnevezése>utca</közterület_megnevezése>
+        <házszám>11</házszám>
+    </Cím>
+    <Cím vevőID="2">
+        <irányítószám>3535</irányítószám>
+        <közterület_neve>Kuruc</közterület_neve>
+        <közterület_megnevezése>utca</közterület_megnevezése>
+        <házszám>23</házszám>
+        <emelet_ajtó>5/1</emelet_ajtó>
+    </Cím>
+    <Cím vevőID="3">
+        <irányítószám>3534</irányítószám>
+        <közterület_neve>Nagy Lajos király</közterület_neve>
+        <közterület_megnevezése>út</közterület_megnevezése>
+        <házszám>30</házszám>
+    </Cím>
+    <Cím vevőID="4">
+        <irányítószám>3531</irányítószám>
+        <közterület_neve>Aba</közterület_neve>
+        <közterület_megnevezése>utca</közterület_megnevezése>
+        <házszám>2</házszám>
+        <emelet_ajtó>3/4</emelet_ajtó>
+    </Cím>
+    <!-- Vevők -->
+    <Vevő vevőID="1" rendelésID="1">
+        <név>Nyíri Levente</név>
+        <telefonszám>0620 589 9938</telefonszám>
+    </Vevő>
+    <Vevő vevőID="2" rendelésID="2">
+        <név>Nagy Balázs</név>
+        <telefonszám>0630 597 6413</telefonszám>
+    </Vevő>
+    <Vevő vevőID="3" rendelésID="3">
+        <név>Kis István</név>
+        <telefonszám>0620 365 5876</telefonszám>
+    </Vevő>
+    <Vevő vevőID="4" rendelésID="4">
+        <név>Varga Iván</név>
+        <telefonszám>0630 879 1298</telefonszám>
+    </Vevő>
+</F023QC_rendelesek>

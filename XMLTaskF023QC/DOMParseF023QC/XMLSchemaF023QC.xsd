@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="megjegyzés"  type="xs:string"/>
+    <xs:element name="rendelés_ideje" type="xs:string"/>
+    <xs:element name="teljes_ár" type="xs:int"/>
+
+    <xs:element name="cím" type="xs:string"/>
+    <xs:element name="nyitvatartás" type="xs:string"/>
+    <xs:element name="elérhetőség" type="xs:string"/>
+
+    <xs:element name="név" type="xs:string"/>
+    <xs:element name="telefonszám" type="telefonszámType"/>
+    <xs:element name="elérhető" type="boolType"/>
+    <xs:element name="típus" type="xs:string"/>
+
+    <xs:element name="mennyiség" type="xs:int"/>
+    <xs:element name="nk_összetevő" type="xs:string"/>
+
+    <xs:element name="ár" type="xs:int"/>
+    <xs:element name="elkészítési_idő" type="xs:string"/>
+    <xs:element name="összetevők" type="xs:string"/>
+
+    <xs:element name="kártyán_szereplő_név" type="xs:string" />
+    <xs:element name="lejárati_dátum" type="lejárati_dátumType"/>
+    <xs:element name="biztonsági_kód" type="biztonsági_kódType"/>
+
+    <xs:element name="irányítószám" type="irányítószámType"/>
+    <xs:element name="közterület_neve" type="xs:string"/>
+    <xs:element name="közterület_megnevezése" type="közterület_megnevezéseType"/>
+    <xs:element name="házszám" type="xs:int"/>
+    <xs:element name="emelet_ajtó" type="emelet_ajtóType"/>
+
+    <xs:simpleType name="telefonszámType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4} \d{3} \d{4}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="boolType">
+        <xs:restriction base="xs:boolean" />
+    </xs:simpleType>
+
+    <xs:simpleType name="irányítószámType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1000"/>
+            <!-- Csak 4 számjegyű lehet az írányítószám -->
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="kártyaszámType">
+        <xs:restriction base="xs:long">
+            <xs:minInclusive value="1000000000000000"/>
+            <!-- Kártyaszám hossza -->
+            <xs:maxInclusive value="9999999999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="emelet_ajtóType">
+        <xs:restriction base="xs:string">
+        <!-- Legyen benne egy / jel -->
+        <xs:pattern value=".*\/.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="közterület_megnevezéseType">
+        <xs:restriction base="xs:string">
+        <!-- utca/út -->
+        <xs:enumeration value="utca"/>
+        <xs:enumeration value="út"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="biztonsági_kódType">
+        <xs:restriction base="xs:string">
+            <xs:length value="3" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="lejárati_dátumType">
+        <xs:restriction base="xs:string">
+        <!-- Legyen benne egy / jel -->
+        <xs:pattern value="\d{2}\/\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Összetett típusok -->
+    <xs:complexType name = "RendelésType">
+        <xs:sequence>
+            <xs:element ref="megjegyzés" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="rendelés_ideje" />
+            <xs:element ref="teljes_ár" />
+        </xs:sequence>
+        <xs:attribute name="rendelésID" type="xs:integer" use="required" />
+        <xs:attribute name="étteremID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="ÉtteremType">
+        <xs:sequence>
+            <xs:element ref="cím" />
+            <xs:element ref="nyitvatartás" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="elérhetőség" />
+        </xs:sequence>
+        <xs:attribute name="étteremID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="FutárType">
+        <xs:sequence>
+            <xs:element ref="név" />
+            <xs:element ref="telefonszám" />
+            <xs:element ref="elérhető" />
+            <xs:element ref="típus" />
+        </xs:sequence>
+        <xs:attribute name="futárID" type="xs:integer" use="required" />
+        <xs:attribute name="étteremID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="RTType">
+        <xs:sequence>
+            <xs:element ref="mennyiség" />
+            <xs:element ref="nk_összetevő" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="rendelésID" type="xs:integer" use="required" />
+        <xs:attribute name="termékID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="TermékType">
+        <xs:sequence>
+            <xs:element ref="név" />
+            <xs:element ref="ár" />
+            <xs:element ref="elkészítési_idő" />
+            <xs:element ref="összetevők" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="termékID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="BankkártyaType">
+        <xs:sequence>
+            <xs:element ref="kártyán_szereplő_név" />
+            <xs:element ref="lejárati_dátum" />
+            <xs:element ref="biztonsági_kód" />
+            <xs:element ref="típus" />
+        </xs:sequence>
+        <xs:attribute name="kártyaszám" type="kártyaszámType" use="required" />
+        <xs:attribute name="vevőID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="CímType">
+        <xs:sequence>
+            <xs:element ref="irányítószám" />
+            <xs:element ref="közterület_neve" />
+            <xs:element ref="közterület_megnevezése" />
+            <xs:element ref="házszám" />
+            <xs:element ref="emelet_ajtó" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="vevőID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="VevőType">
+        <xs:sequence>
+            <xs:element ref="név" />
+            <xs:element ref="telefonszám" />
+        </xs:sequence>
+        <xs:attribute name="vevőID" type="xs:integer" use="required" />
+        <xs:attribute name="rendelésID" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <!-- Felépítés a gyökérelemtől -->
+    <xs:element name="F023QC_rendelesek">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Rendelés" type="RendelésType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Étterem" type="ÉtteremType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Futár" type="FutárType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="RT" type="RTType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Termék" type="TermékType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Bankkártya" type="BankkártyaType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Cím" type="CímType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="Vevő" type="VevőType" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <!-- Kulcsok -->
+        <xs:key name="rendelésPK">
+            <xs:selector xpath="Rendelés"/>
+            <xs:field xpath="@rendelésID"/>
+        </xs:key>
+
+        <xs:key name="étteremPK">
+            <xs:selector xpath="Étterem"/>
+            <xs:field xpath="@étteremID"/>
+        </xs:key>
+
+        <xs:key name="futárPK">
+            <xs:selector xpath="Futár"/>
+            <xs:field xpath="@futárID"/>
+        </xs:key>
+
+        <xs:key name="termékPK">
+            <xs:selector xpath="Termék"/>
+            <xs:field xpath="@termékID"/>
+        </xs:key>
+
+        <xs:key name="kártyaszámPK">
+            <xs:selector xpath="Bankkártya"/>
+            <xs:field xpath="@kártyaszám"/>
+        </xs:key>
+
+        <xs:key name="vevőPK">
+            <xs:selector xpath="Vevő"/>
+            <xs:field xpath="@vevőID"/>
+        </xs:key>
+
+        <!-- Idegen kulcsok -->
+        <xs:keyref name="Rendelés_RT_FK" refer="rendelésPK">
+            <xs:selector xpath="RT" />
+            <xs:field xpath="@rendelésID" />
+        </xs:keyref>
+
+        <xs:keyref name="Rendelés_Vevő_FK" refer="rendelésPK">
+            <xs:selector xpath="Vevő" />
+            <xs:field xpath="@rendelésID" />
+        </xs:keyref>
+
+        
+        <xs:keyref name="Étterem_Rendelés_FK" refer="étteremPK">
+            <xs:selector xpath="Rendelés" />
+            <xs:field xpath="@étteremID" />
+        </xs:keyref>
+
+        <xs:keyref name="Étterem_Futár_FK" refer="étteremPK">
+            <xs:selector xpath="Futár" />
+            <xs:field xpath="@étteremID" />
+        </xs:keyref>
+
+        <xs:keyref name="Termék_RT_FK" refer="termékPK">
+            <xs:selector xpath="RT" />
+            <xs:field xpath="@termékID" />
+        </xs:keyref>
+
+        <xs:keyref name="Vevő_Bakkártya_FK" refer="vevőPK">
+            <xs:selector xpath="Bankkártya" />
+            <xs:field xpath="@vevőID" />
+        </xs:keyref>
+
+        <xs:keyref name="Vevő_Cím_FK" refer="vevőPK">
+            <xs:selector xpath="Cím" />
+            <xs:field xpath="@vevőID" />
+        </xs:keyref>
+
+        <!-- 1:1 kapcsolat -->
+        <xs:unique name="VevoRendeles">
+            <xs:selector xpath="Vevő"/>
+            <xs:field xpath="@rendelésID"/>
+        </xs:unique>
+
+    </xs:element>
+
+    
+</xs:schema>
