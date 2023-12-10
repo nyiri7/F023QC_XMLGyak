@@ -1,0 +1,189 @@
+
+  {
+  "F023QC_orarend":
+    {
+    "ora":
+      [
+      
+        {
+        "targy":"WEB technológiák 1.",
+        "oktato":"Agárdi Anita",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"14:00",
+          "nap":"Hétfő",
+          "ig":"16:00"
+        },
+        "_tipus":"eloadas",
+        "_id":"1",
+        "helyszin":"XXX"
+      },
+      
+        {
+        "targy":"WEB technológiák 1.",
+        "oktato":"Agárdi Anita",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"16:00",
+          "nap":"Hétfő",
+          "ig":"18:00"
+        },
+        "_tipus":"gyakorlat",
+        "_id":"2",
+        "helyszin":"Inf\/202"
+      },
+      
+        {
+        "targy":"Mesterséges Inteligencia",
+        "oktato":"Kunné Dr. Tamás Judit",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"10:00",
+          "nap":"Kedd",
+          "ig":"12:00"
+        },
+        "_tipus":"eloadas",
+        "_id":"3",
+        "helyszin":"XXXII"
+      },
+      
+        {
+        "targy":"Adatkezelés XML-ben",
+        "oktato":"Dr. Bednarik László",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"12:00",
+          "nap":"Kedd",
+          "ig":"14:00"
+        },
+        "_tipus":"eloadas",
+        "_id":"4",
+        "helyszin":"XXXII"
+      },
+      
+        {
+        "targy":"WEB-es alkalmazások C#",
+        "oktato":"Árvai László Lajos",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"14:00",
+          "nap":"Kedd",
+          "ig":"16:00"
+        },
+        "_tipus":"eloadas",
+        "_id":"5",
+        "helyszin":"Inf\/101"
+      },
+      
+        {
+        "targy":"WEB-es alkalmazások C#",
+        "oktato":"Árvai László Lajos",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"16:00",
+          "nap":"Kedd",
+          "ig":"18:00"
+        },
+        "_tipus":"gyakorlat",
+        "_id":"6",
+        "helyszin":"Inf\/101"
+      },
+      
+        {
+        "targy":"Adatkezelés XML-ben",
+        "oktato":"Dr. Bednarik László",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"10:00",
+          "nap":"Szerda",
+          "ig":"12:00"
+        },
+        "_tipus":"gyakorlat",
+        "_id":"7",
+        "helyszin":"Inf\/101"
+      },
+      
+        {
+        "targy":"Integrált vállalati rendszerek",
+        "oktato":"Dr. Samad Dadvandipour",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"12:00",
+          "nap":"Szerda",
+          "ig":"14:00"
+        },
+        "_tipus":"eloadas",
+        "_id":"8",
+        "helyszin":"X"
+      },
+      
+        {
+        "targy":"Integrált vállalati rendszerek",
+        "oktato":"Dr. Kulcsárné Dr. Forrai Mónika",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"14:00",
+          "nap":"Szerda",
+          "ig":"16:00"
+        },
+        "_tipus":"gyakorlat",
+        "_id":"9",
+        "helyszin":"Inf\/15"
+      },
+      
+        {
+        "targy":"Windows Rendszergazda",
+        "oktato":"Wagner György",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"16:00",
+          "nap":"Szerda",
+          "ig":"18:00"
+        },
+        "_tipus":"eloadas",
+        "_id":"10",
+        "helyszin":"Inf\/101"
+      },
+      
+        {
+        "targy":"Windows Rendszergazda",
+        "oktato":"Wagner György",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"18:00",
+          "nap":"Szerda",
+          "ig":"20:00"
+        },
+        "_tipus":"gyakorlat",
+        "_id":"11",
+        "helyszin":"Inf\/101"
+      },
+      
+        {
+        "targy":"Mesterséges intelligencia",
+        "oktato":"Fazekas Levente",
+        "szak":"G3BIW",
+        "idopont":
+          {
+          "tol":"10:00",
+          "nap":"Csütörtök",
+          "ig":"12:00"
+        },
+        "_tipus":"gyakorlat",
+        "_id":"12",
+        "helyszin":"I"
+      }
+    ]
+  }
+}

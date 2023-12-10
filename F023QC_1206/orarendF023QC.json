@@ -1,0 +1,162 @@
+{
+	"F023QC_orarend": {
+		"ora": [
+			{
+				"targy": "WEB technológiák 1.",
+				"idopont": {
+					"nap": "Hétfő",
+					"tol": "14:00",
+					"ig": "16:00"
+				},
+				"helyszin": "XXX",
+				"oktato": "Agárdi Anita",
+				"szak": "G3BIW",
+				"_id": "1",
+				"_tipus": "eloadas"
+			},
+			{
+				"targy": "WEB technológiák 1.",
+				"idopont": {
+					"nap": "Hétfő",
+					"tol": "16:00",
+					"ig": "18:00"
+				},
+				"helyszin": "Inf/202",
+				"oktato": "Agárdi Anita",
+				"szak": "G3BIW",
+				"_id": "2",
+				"_tipus": "gyakorlat"
+			},
+			{
+				"targy": "Mesterséges Inteligencia",
+				"idopont": {
+					"nap": "Kedd",
+					"tol": "10:00",
+					"ig": "12:00"
+				},
+				"helyszin": "XXXII",
+				"oktato": "Kunné Dr. Tamás Judit",
+				"szak": "G3BIW",
+				"_id": "3",
+				"_tipus": "eloadas"
+			},
+			{
+				"targy": "Adatkezelés XML-ben",
+				"idopont": {
+					"nap": "Kedd",
+					"tol": "12:00",
+					"ig": "14:00"
+				},
+				"helyszin": "XXXII",
+				"oktato": "Dr. Bednarik László",
+				"szak": "G3BIW",
+				"_id": "4",
+				"_tipus": "eloadas"
+			},
+			{
+				"targy": "WEB-es alkalmazások C#",
+				"idopont": {
+					"nap": "Kedd",
+					"tol": "14:00",
+					"ig": "16:00"
+				},
+				"helyszin": "Inf/101",
+				"oktato": "Árvai László Lajos",
+				"szak": "G3BIW",
+				"_id": "5",
+				"_tipus": "eloadas"
+			},
+			{
+				"targy": "WEB-es alkalmazások C#",
+				"idopont": {
+					"nap": "Kedd",
+					"tol": "16:00",
+					"ig": "18:00"
+				},
+				"helyszin": "Inf/101",
+				"oktato": "Árvai László Lajos",
+				"szak": "G3BIW",
+				"_id": "6",
+				"_tipus": "gyakorlat"
+			},
+			{
+				"targy": "Adatkezelés XML-ben",
+				"idopont": {
+					"nap": "Szerda",
+					"tol": "10:00",
+					"ig": "12:00"
+				},
+				"helyszin": "Inf/101",
+				"oktato": "Dr. Bednarik László",
+				"szak": "G3BIW",
+				"_id": "7",
+				"_tipus": "gyakorlat"
+			},
+			{
+				"targy": "Integrált vállalati rendszerek",
+				"idopont": {
+					"nap": "Szerda",
+					"tol": "12:00",
+					"ig": "14:00"
+				},
+				"helyszin": "X",
+				"oktato": "Dr. Samad Dadvandipour",
+				"szak": "G3BIW",
+				"_id": "8",
+				"_tipus": "eloadas"
+			},
+			{
+				"targy": "Integrált vállalati rendszerek",
+				"idopont": {
+					"nap": "Szerda",
+					"tol": "14:00",
+					"ig": "16:00"
+				},
+				"helyszin": "Inf/15",
+				"oktato": "Dr. Kulcsárné Dr. Forrai Mónika",
+				"szak": "G3BIW",
+				"_id": "9",
+				"_tipus": "gyakorlat"
+			},
+			{
+				"targy": "Windows Rendszergazda",
+				"idopont": {
+					"nap": "Szerda",
+					"tol": "16:00",
+					"ig": "18:00"
+				},
+				"helyszin": "Inf/101",
+				"oktato": "Wagner György",
+				"szak": "G3BIW",
+				"_id": "10",
+				"_tipus": "eloadas"
+			},
+			{
+				"targy": "Windows Rendszergazda",
+				"idopont": {
+					"nap": "Szerda",
+					"tol": "18:00",
+					"ig": "20:00"
+				},
+				"helyszin": "Inf/101",
+				"oktato": "Wagner György",
+				"szak": "G3BIW",
+				"_id": "11",
+				"_tipus": "gyakorlat"
+			},
+			{
+				"targy": "Mesterséges intelligencia",
+				"idopont": {
+					"nap": "Csütörtök",
+					"tol": "10:00",
+					"ig": "12:00"
+				},
+				"helyszin": "I",
+				"oktato": "Fazekas Levente",
+				"szak": "G3BIW",
+				"_id": "12",
+				"_tipus": "gyakorlat"
+			}
+		]
+	}
+}

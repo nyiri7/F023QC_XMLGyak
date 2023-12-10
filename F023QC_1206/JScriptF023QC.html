@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Órarend</h3>
+    <div id = "data"></div>
+
+</body>
+<script>
+
+    const dataDiv = document.getElementById("data");
+
+    function writeData(json) {
+        try {
+            dataDiv.innerHTML = "";
+            const obj = JSON.parse(json);
+            const array = obj.F023QC_orarend.ora;
+            for (let i = 0; i < array.length; i++) {
+                let child = document.createElement("div")
+                child.innerHTML = "<span style='font-weight:bold;'>Óra: " + array[i].targy + "</span>";
+                dataDiv.appendChild(child);
+                child = document.createElement("div")
+                child.innerText = "Időpont: " + array[i].idopont.nap + " " + array[i].idopont.tol + "-" + array[i].idopont.ig;
+                dataDiv.appendChild(child);
+                child = document.createElement("div")
+                child.innerText = "Helyszín: " + array[i].helyszin;
+                dataDiv.appendChild(child);
+                child = document.createElement("div")
+                child.innerText = "Oktató: " + array[i].oktato;
+                dataDiv.appendChild(child);
+                child = document.createElement("div")
+                child.innerText = "Szak: " + array[i].szak;
+                child.style.marginBottom = "20px"
+                dataDiv.appendChild(child);
+            }
+        } catch (error) {
+            let child = document.createElement("div");
+            child.innerHTML = "<p>Hiba történt</p>";
+            dataDiv.appendChild(child);
+        }
+    }
+
+    let json = '{ "F023QC_orarend": { "ora": [ { "targy": "WEB technológiák 1.", "idopont": { "nap": "Hétfő", "tol": "14:00", "ig": "16:00" }, "helyszin": "XXX", "oktato": "Agárdi Anita", "szak": "G3BIW", "id": "1", "tipus": "eloadas" }, { "targy": "WEB technológiák 1.", "idopont": { "nap": "Hétfő", "tol": "16:00", "ig": "18:00" }, "helyszin": "Inf/202", "oktato": "Agárdi Anita", "szak": "G3BIW", "id": "2", "tipus": "gyakorlat" }, { "targy": "Mesterséges Inteligencia", "idopont": { "nap": "Kedd", "tol": "10:00", "ig": "12:00" }, "helyszin": "XXXII", "oktato": "Kunné Dr. Tamás Judit", "szak": "G3BIW", "id": "3", "tipus": "eloadas" }, { "targy": "Adatkezelés XML-ben", "idopont": { "nap": "Kedd", "tol": "12:00", "ig": "14:00" }, "helyszin": "XXXII", "oktato": "Dr. Bednarik László", "szak": "G3BIW", "id": "4", "tipus": "eloadas" }, { "targy": "WEB-es alkalmazások C#", "idopont": { "nap": "Kedd", "tol": "14:00", "ig": "16:00" }, "helyszin": "Inf/101", "oktato": "Árvai László Lajos", "szak": "G3BIW", "id": "5", "tipus": "eloadas" }, { "targy": "WEB-es alkalmazások C#", "idopont": { "nap": "Kedd", "tol": "16:00", "ig": "18:00" }, "helyszin": "Inf/101", "oktato": "Árvai László Lajos", "szak": "G3BIW", "id": "6", "tipus": "gyakorlat" }, { "targy": "Adatkezelés XML-ben", "idopont": { "nap": "Szerda", "tol": "10:00", "ig": "12:00" }, "helyszin": "Inf/101", "oktato": "Dr. Bednarik László", "szak": "G3BIW", "id": "7", "tipus": "gyakorlat" }, { "targy": "Integrált vállalati rendszerek", "idopont": { "nap": "Szerda", "tol": "12:00", "ig": "14:00" }, "helyszin": "X", "oktato": "Dr. Samad Dadvandipour", "szak": "G3BIW", "id": "8", "tipus": "eloadas" }, { "targy": "Integrált vállalati rendszerek", "idopont": { "nap": "Szerda", "tol": "14:00", "ig": "16:00" }, "helyszin": "Inf/15", "oktato": "Dr. Kulcsárné Dr. Forrai Mónika", "szak": "G3BIW", "id": "9", "tipus": "gyakorlat" }, { "targy": "Windows Rendszergazda", "idopont": { "nap": "Szerda", "tol": "16:00", "ig": "18:00" }, "helyszin": "Inf/101", "oktato": "Wagner György", "szak": "G3BIW", "id": "10", "tipus": "eloadas" }, { "targy": "Windows Rendszergazda", "idopont": { "nap": "Szerda", "tol": "18:00", "ig": "20:00" }, "helyszin": "Inf/101", "oktato": "Wagner György", "szak": "G3BIW", "id": "11", "tipus": "gyakorlat" }, { "targy": "Mesterséges intelligencia", "idopont": { "nap": "Csütörtök", "tol": "10:00", "ig": "12:00" }, "helyszin": "I", "oktato": "Fazekas Levente", "szak": "G3BIW", "id": "12", "tipus": "gyakorlat" } ] } }';
+    writeData(json);
+    
+</script>
+</html>
