@@ -146,21 +146,21 @@
         <xs:attribute name="vevőID" type="xs:integer" use="required" />
     </xs:complexType>
 
-    <xs:complexType name="CímType">
-        <xs:sequence>
-            <xs:element ref="irányítószám" />
-            <xs:element ref="közterület_neve" />
-            <xs:element ref="közterület_megnevezése" />
-            <xs:element ref="házszám" />
-            <xs:element ref="emelet_ajtó" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute name="vevőID" type="xs:integer" use="required" />
-    </xs:complexType>
-
     <xs:complexType name="VevőType">
         <xs:sequence>
             <xs:element ref="név" />
             <xs:element ref="telefonszám" />
+            <xs:element name="cím">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="irányítószám" />
+                        <xs:element ref="közterület_neve" />
+                        <xs:element ref="közterület_megnevezése" />
+                        <xs:element ref="házszám" />
+                        <xs:element ref="emelet_ajtó" minOccurs="0" maxOccurs="1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="vevőID" type="xs:integer" use="required" />
         <xs:attribute name="rendelésID" type="xs:integer" use="required" />
@@ -176,7 +176,6 @@
                 <xs:element name="RT" type="RTType" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element name="Termék" type="TermékType" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element name="Bankkártya" type="BankkártyaType" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element name="Cím" type="CímType" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element name="Vevő" type="VevőType" minOccurs="1" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -244,10 +243,6 @@
             <xs:field xpath="@vevőID" />
         </xs:keyref>
 
-        <xs:keyref name="Vevő_Cím_FK" refer="vevőPK">
-            <xs:selector xpath="Cím" />
-            <xs:field xpath="@vevőID" />
-        </xs:keyref>
 
         <!-- 1:1 kapcsolat -->
         <xs:unique name="VevoRendeles">

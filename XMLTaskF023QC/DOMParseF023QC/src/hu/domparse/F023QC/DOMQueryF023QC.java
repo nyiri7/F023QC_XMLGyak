@@ -3,11 +3,7 @@ package hu.domparse.F023QC;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,151 +14,127 @@ import org.xml.sax.SAXException;
 
 public class DOMQueryF023QC {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-    	String attributeName="";
-    	String id = "";
-    	String Tid ="";
         File xmlFile = new File("XMLF023QC.xml");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = factory.newDocumentBuilder();
 		Document document = dBuilder.parse(xmlFile);
 		document.getDocumentElement().normalize();
-
-
-        boolean exit = false;
-        boolean ok = false;
-        Scanner sc = new Scanner(System.in);
-
-
-        while (!exit) {
-            System.out.println("Válasszon!");
-            System.out.println("0. Kilépés");
-            System.out.println("1. Elérhető futárok");
-            System.out.println("2. MasterCard kártyák adatai");
-            System.out.println("3. Egy elem");
-            int mode = sc.nextInt();
-            sc.nextLine();
-    		System.out.println();
-            switch (mode){
-                case 0:
-                    exit=true;
-                    break;
-                case 1:
-                	getElerheto(document);
-                    break;
-                case 2:
-                	getMaster(document);
-                    break;
-                case 3:
-                	ok=false;
-                	//ELőször kiválaszttjuk, hogy melyik elemet akarjuk lekérdezni
-                	List<String> uniqueElements = getUniqueNodes(document);
-                	String selected ="";
-                	while(!ok) {
-
-                    	System.out.println("Melyiket szeretné lekérdezni?");
-                    	for (String string : uniqueElements) {
-    						System.out.println(string);
-    					}
-                    	selected = sc.nextLine();
-                    	
-                    	if(uniqueElements.contains(selected)) {
-                    		ok=true;
-                    	}else {
-                    		System.out.println("Nincs ilyen elem!");
-                    	}
-                	}
-            		System.out.println();
-                	ok=false;
-                	
-                	//normál id (rendelés id RT estén)
-                	id = "";
-                	Tid =""; 
-                	//Bekérjük az id-t
-                	attributeName =selected.toLowerCase()+"ID";
-                	if(selected.equalsIgnoreCase("Cím")) {
-                		attributeName = "vevőID";
-                	}
-                	if(selected.equalsIgnoreCase("Bankkártya")) {
-                		attributeName = "kártyaszám";
-                	}
-
-                	if(!selected.equalsIgnoreCase("RT")) {
-                    	while(!ok) {
-                    		System.out.println("Adja meg az id-t: ");
-                        	List<String> uniqueId = getUniqueIDs(document,attributeName, document.getElementsByTagName(selected));
-                        	for (String string : uniqueId) {
-        						System.out.println(string);
-        					}
-
-                        	id = sc.nextLine();
-
-                        	if(uniqueId.contains(id)) {
-                        		ok=true;
-                        	}else {
-                        		System.out.println("Nincs ilyen ID");
-                        	}
-                    		System.out.println();
-                        	//Kiíratjuk az elemet
-                        	printNode(getNode(document,attributeName, document.getElementsByTagName(selected),id));
-                    	}
-                	}else {
-                    	while(!ok) {
-                    		System.out.println("Adja meg az rendelésID-t: ");
-                        	List<String> uniqueId = getUniqueIDs(document,"rendelésID", document.getElementsByTagName(selected));
-                        	for (String string : uniqueId) {
-        						System.out.println(string);
-        					}
-
-                        	id = sc.nextLine();
-
-                        	if(uniqueId.contains(id)) {
-                        		ok=true;
-                        	}else {
-                        		System.out.println("Nincs ilyen ID");
-                        	}
-                    	}
-                		System.out.println();
-                    	ok=false;
-                    	while(!ok) {
-                    		System.out.println("Adja meg a termékID-t: ");
-                        	List<String> uniqueId = getUniqueTIDs(document,"termékID", document.getElementsByTagName(selected),id);
-                        	for (String string : uniqueId) {
-        						System.out.println(string);
-        					}
-
-                        	Tid = sc.nextLine();
-
-                        	if(uniqueId.contains(Tid)) {
-                        		ok=true;
-                        	}else {
-                        		System.out.println("Nincs ilyen ID");
-                        	}
-                    	}
-                		System.out.println();
-                    	//Kiíratjuk az elemet RT
-                    	printNode(getNodeRT(document, document.getElementsByTagName(selected),id,Tid));
-                	}
-
-                	
-                	
-
-                	
-                	
-                	
-                    break;
-            }
-        }
-        sc.close();
+		
+		//Lekérdezések
+		
+		//Lekérdezem az összes elérhető futárt
+		System.out.println("Az elérhető futárok:");
+    	getElerheto(document);
+    	
+    	//Lekérdezem azokat a bankkártyákat, amelyeknek a típusa mastercard
+    	System.out.println();
+    	System.out.println("MasterCard Bankkártyák");
+    	getMaster(document);
+    	
+    	//Lekérdezem a rendelésben lévő termékeket
+    	System.out.println();
+    	System.out.println("Rendelésben lévő termékek:");
+    	getTermekByRendeles(document, "1");
+    	
+    	//Lekérdezem az étteremhez tartozó rendeléseket
+    	System.out.println();
+    	System.out.println("Étteremhez tartozó rendelések:");
+    	getRendelesByEtterem(document, "1");
+    	
+    	//Lekérdezem azokat a rendeléseket, amelyek ugyanarról a környékről származnak (irányítószám alapján)
+    	System.out.println();
+    	System.out.println("Rendelések egy környékről:");
+    	getRendelesByIrszam(document, "3531");
+    	
+    }
+    
+    private static void getRendelesByIrszam(Document doc, String irszam) {
+    	//Kigyűjtjük az összes vevőt
+    	NodeList vevok = doc.getElementsByTagName("Vevő");
+    	List<String> rendelesIDk = new ArrayList<String>();
+    	
+    	for(int i=0;i<vevok.getLength();i++) {
+    		//Ez a jelenlegi vevő
+    		Element vevo = (Element) vevok.item(i);
+    		//A jelenlegi vevőnek a címe
+    		Element cim = (Element) vevo.getElementsByTagName("cím").item(0);
+    		//A jelenlegi irányítószám
+    		Element iranyitoszam = (Element) cim.getElementsByTagName("irányítószám").item(0);
+    		
+    		//Ha a jelenlegi irányítószám megegyezik a megadottal, akkor a vevőnek a rendelés id-jét hozzáadjuk a listához
+    		if(iranyitoszam.getTextContent().equalsIgnoreCase(irszam)) {
+    			rendelesIDk.add(vevo.getAttribute("rendelésID"));
+    		}
+    	}
+    	
+    	//A dokumentumból kiszedem a rendeléseket
+    	NodeList rendelesek = doc.getElementsByTagName("Rendelés");
+    	
+    	//végigmegyek az összes rendelésen
+    	for(int i =0;i<rendelesek.getLength();i++) {
+    		//Ha a rendelés id-je benne van az irányítószámhoz tartozó rendelésid-k listájában, akkor kiíratom
+    		if(rendelesIDk.contains(rendelesek.item(i).getAttributes().getNamedItem("rendelésID").getTextContent())) {
+    			printNode(rendelesek.item(i));
+    		}
+    	}
+    	
+    	
+    }
+    
+    private static void getRendelesByEtterem(Document doc, String etteremID) {
+    	//A dokumentumból kiszedem az összes rendelést
+    	NodeList Rendelesek = doc.getElementsByTagName("Rendelés");
+    	
+    	//Végigmegyek a rendeléseken és ha egyezik a megadott étteremid-vel az attribute értéke, akkor kiíratom
+    	for(int i=0;i<Rendelesek.getLength();i++) {
+    		if(Rendelesek.item(i).getAttributes().getNamedItem("étteremID").getTextContent().equalsIgnoreCase(etteremID)) {
+    			printNode(Rendelesek.item(i));
+    		}
+    	}
+    }
+    
+    
+    private static void getTermekByRendeles(Document doc,String rendelesID) {
+    	//Lekérem az összes RT kapcsolatot
+    	NodeList RT = doc.getElementsByTagName("RT");
+    	//Ebben fpgom tárolni a termékek id-it
+    	List<String> termekIDk = new ArrayList<String>();
+    	
+    	
+    	//végigmegyek a kapcsolat elemein és megnézem a rendeléID-ket, ha egyezik akkor a termék id-t hozzáadom a listához
+    	for(int i=0;i < RT.getLength();i++) {
+    		if(RT.item(i).getAttributes().getNamedItem("rendelésID").getTextContent().equalsIgnoreCase(rendelesID)) {
+    			termekIDk.add(RT.item(i).getAttributes().getNamedItem("termékID").getTextContent());
+    		}
+    	}
+    	
+    	//Kigyűjtöm az összes terméket a dokumentumból
+    	NodeList termekek = doc.getElementsByTagName("Termék");
+    	
+    	//Végigmegyek a termékeken és ha egyezést találok, akkor kiíratom a terméket
+    	for(int i =0;i<termekek.getLength();i++) {
+    		//Ha benne a van a listában a termék id-je, akkor benne van a rendelésben
+    		if(termekIDk.contains(termekek.item(i).getAttributes().getNamedItem("termékID").getTextContent())) {
+    			printNode(termekek.item(i));
+    		}
+    	}
+    	
+    	
+    	
+    	
     }
     
     private static void getElerheto(Document doc) {
+    	//Kigyűjtöm a futárokat a dokumentumból
     	NodeList futarok = doc.getElementsByTagName("Futár");
-    	System.out.println("Elérhető futárok: ");
     	
+    	//Végigmegyek a futárokon
     	for(int i =0;i<futarok.getLength();i++) {
+    		//Kigyűjtöm az aktuális futár gyerekelemeit
     		NodeList childs = futarok.item(i).getChildNodes();
-    		
+    		//Végigmegyek a gyerekelemeken és keresem az elérhető nevű gyerekelemet
     		for(int j=0;j<childs.getLength();j++) {
+    			//Ha a futár elérhető, akkor kiíratom
     			if(childs.item(j).getNodeName().equalsIgnoreCase("elérhető") && childs.item(j).getTextContent().equalsIgnoreCase("1") ) {
     				printNode(futarok.item(i));
     				System.out.println();
@@ -175,13 +147,17 @@ public class DOMQueryF023QC {
     	
     }
     private static void getMaster(Document doc) {
+    	//Kigyűjtöm a kártyákat a dokumentumból
     	NodeList kartyak = doc.getElementsByTagName("Bankkártya");
-    	System.out.println("MasterCard Kártyák: ");
-    	
+
+    	//Végigmegyek a kártyákon
     	for(int i =0;i<kartyak.getLength();i++) {
+    		//Az aktuális kártya gyerekelemei
     		NodeList childs = kartyak.item(i).getChildNodes();
     		
+    		//Megkeresem a típus nevű gyerekelemet
     		for(int j=0;j<childs.getLength();j++) {
+    			//Ha az értéke Mastercard, akkor kiíratom a kártyát
     			if(childs.item(j).getNodeName().equalsIgnoreCase("típus") && childs.item(j).getTextContent().equalsIgnoreCase("Mastercard") ) {
     				printNode(kartyak.item(i));
     				System.out.println();
@@ -195,140 +171,62 @@ public class DOMQueryF023QC {
     }
     
   //Kiíratjuk a consolra a node értékeit
-    private static void printNode(Node node) {
-    	String frow = node.getNodeName()+" ";
-    	
-    	NodeList childs = node.getChildNodes();
-    	
-    	
-        for (int j = 0; j < node.getAttributes().getLength(); j++) 
-        {
-        	Node attribute = node.getAttributes().item(j);
-        	frow+=attribute.getNodeName() + ": " + attribute.getNodeValue()+" ";            
-        }
-    	System.out.print(frow);
-    	
-    	
-    	for(int i = 0 ; i<childs.getLength();i++) {
-    		if(childs.item(i).getNodeType() == Node.ELEMENT_NODE) {
-    			System.out.print("\n"+childs.item(i).getNodeName()+": "+childs.item(i).getTextContent());
-    		}
-    	}
-    	
-    	System.out.println();
+    private static void printNode(Node currentElement) {
+    	//Csak akkor fusson le, ha a típusa ELEMENT
+    	if (currentElement.getNodeType()==Node.ELEMENT_NODE) {
+    		//Első sor az xml szintaktikája + a node neve
+			String fRow ="<"+currentElement.getNodeName()+" ";
+			
+			//Az első sorhoz hozzáadom az attribútumokat
+			for(int j = 0; j< currentElement.getAttributes().getLength();j++) {
+				if(j==currentElement.getAttributes().getLength()-1) {
+					fRow += currentElement.getAttributes().item(j).getNodeName()+"=\""+currentElement.getAttributes().item(j).getTextContent()+"\">";
+				}else {
+					fRow += currentElement.getAttributes().item(j).getNodeName()+"=\""+currentElement.getAttributes().item(j).getTextContent()+"\" ";
+				}
+			}
+			
+			
+			//Kiíratom az első sort
+			System.out.println(getIndent(1)+fRow);
+			
+			//Végigmegyek a Node gyerekelemein
+			NodeList childs = currentElement.getChildNodes();
+			for(int j=0;j<childs.getLength();j++) {
+				Node child = childs.item(j);
+				//Ha a gyerekelem típusa ELEMENT
+				if(child.getNodeType()==Node.ELEMENT_NODE) {
+					//Ha csak sima gyerekelem, akkor kiíratom (Csak szöveg van benne)
+					if(child.getChildNodes().getLength()==1) {
+						System.out.println(getIndent(2)+"<"+child.getNodeName()+">"+child.getTextContent()+"</"+child.getNodeName()+">");
+					//Ha nem csak szöveg van benne, akkor meg kell nézni a gyerekelem gyerekelemeit és azokat is kiíratni (cím esetében)
+					}else {
+						//Kiírom a gyerekelemet
+						System.out.println(getIndent(2)+"<"+child.getNodeName()+">");
+						
+						//Kiírom a gyerekelem gyerekelemeit
+						for(int k =0;k<child.getChildNodes().getLength();k++) {
+							if(child.getChildNodes().item(k).getNodeType()==Node.ELEMENT_NODE) {
+								System.out.println(getIndent(3)+"<"+child.getChildNodes().item(k).getNodeName()+">"+child.getChildNodes().item(k).getTextContent()+"</"+child.getChildNodes().item(k).getNodeName()+">");
+							}
+							
+						}
+						//Bezárom a gyerekelemet
+						System.out.println(getIndent(2)+"</"+child.getNodeName()+">");
+					}
+				}
+			}
+			//Bezárom az elemet
+			System.out.println(getIndent(1)+"</"+currentElement.getNodeName()+">\n");
+		}
     }
-    
-    
-    
-  //Ezzel kapjuk meg a node-ot
-    private static Node getNode(Document doc,String attributeName, NodeList nodes,String Id) {
-    	
-    	
-    	
-        for(int i =0; i<nodes.getLength();i++) {
-        	if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        		NamedNodeMap attributes = nodes.item(i).getAttributes();
-        		if(attributes.getNamedItem(attributeName).getTextContent().equalsIgnoreCase(Id)) {
-        			return nodes.item(i);
-        		}
-        		
-        	}
-        }
-        
-        return null;
-
-    }
-    
-    
-    //Ezzel kapjuk meg a node-ot az RT-hez
-    private static Node getNodeRT(Document doc,NodeList nodes,String Id,String Tid) {
-    	
-    	
-    	
-        for(int i =0; i<nodes.getLength();i++) {
-        	if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        		NamedNodeMap attributes = nodes.item(i).getAttributes();
-        		if(attributes.getNamedItem("termékID").getTextContent().equalsIgnoreCase(Tid) && attributes.getNamedItem("rendelésID").getTextContent().equalsIgnoreCase(Id)) {
-        			return nodes.item(i);
-        		}
-        		
-        	}
-        }
-        
-        return null;
-
-    }
-    
-    
-    
-    //Ezzel megkapjuk az egyedi node-ok nevét
-    private static List<String> getUniqueNodes(Document doc) {
-    	
-        List<String> uniqueElements = new ArrayList<>();
-        Set<String> seenElements = new HashSet<>();
-    	
-        Node root = doc.getDocumentElement();
-        
-        
-        NodeList childs = root.getChildNodes();
-        
-        for(int i=0 ; i<childs.getLength();i++) {
-        	Node actualChild = childs.item(i);
-        	
-        	if(!seenElements.contains(actualChild.getNodeName()) && childs.item(i).getNodeType() == Node.ELEMENT_NODE ) {
-        		seenElements.add(actualChild.getNodeName());
-        		uniqueElements.add(actualChild.getNodeName());
-        	}
-        }
-        
-        return uniqueElements;
-
-    }
-    
-    
-    //Id-k megkeresése
-    private static List<String> getUniqueIDs(Document doc,String attributeName, NodeList nodes) {
-    	
-        List<String> uniqueElements = new ArrayList<>();
-        Set<String> seenElements = new HashSet<>();
-    	
-        for(int i =0; i<nodes.getLength();i++) {
-        	if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        		NamedNodeMap attributes = nodes.item(i).getAttributes();
-        		if(!seenElements.contains(attributes.getNamedItem(attributeName).getTextContent())) {
-        			seenElements.add(attributes.getNamedItem(attributeName).getTextContent());
-        			uniqueElements.add(attributes.getNamedItem(attributeName).getTextContent());
-        		}
-        		
-        	}
-        }
-        
-        return uniqueElements;
-
-    }
-    
-    
-    //Termék id-k megkeresése
-    private static List<String> getUniqueTIDs(Document doc,String attributeName, NodeList nodes,String id) {
-    	
-        List<String> uniqueElements = new ArrayList<>();
-        Set<String> seenElements = new HashSet<>();
-    	
-        for(int i =0; i<nodes.getLength();i++) {
-        	if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        		NamedNodeMap attributes = nodes.item(i).getAttributes();
-        		if(!seenElements.contains(attributes.getNamedItem(attributeName).getTextContent())&& attributes.getNamedItem("rendelésID").getTextContent().equalsIgnoreCase(id)) {
-        			seenElements.add(attributes.getNamedItem(attributeName).getTextContent());
-        			uniqueElements.add(attributes.getNamedItem(attributeName).getTextContent());
-        		}
-        		
-        	}
-        }
-        
-        return uniqueElements;
-
-    }
-    
-    
-    
+    //Behúzások meghatározása
+	private static String getIndent(int indent) {
+		//A paraméternek megfelelő behúzást ad vissza, a behúzás 4 darab space
+		String ret="";
+		for(int i=0;i<indent;i++) {
+			ret+="    ";
+		}
+		return ret;
+	}
 }

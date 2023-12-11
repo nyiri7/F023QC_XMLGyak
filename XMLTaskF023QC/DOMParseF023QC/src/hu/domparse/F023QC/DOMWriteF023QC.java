@@ -12,41 +12,87 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import java.io.File;
-
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class DOMWriteF023QC {
 	public static void main(String[] args) {
         try {
-            File xmlFile = new File("XMLF023QC.xml");
+        	//Új XML fájl létrehozása
     		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     		DocumentBuilder dBuilder = factory.newDocumentBuilder();;
-    		Document document = dBuilder.parse(xmlFile);
-    		document.getDocumentElement().normalize();
-    		
     		Document newDocument = dBuilder.newDocument();
+    		
+    		//A gyökérelem létrehozása és hozzáadása a dokumentumhoz
             Element rootElement = newDocument.createElement("F023QC_rendelesek");
             rootElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
             rootElement.setAttribute("xsi:noNamespaceSchemaLocation", "XMLSchemaF023QC.xsd");
             newDocument.appendChild(rootElement);
-    		
-            addRendeles(newDocument,rootElement,getRendeles(document.getElementsByTagName("Rendelés")));
-            addEtterem(newDocument, rootElement, getEtterem(document.getElementsByTagName("Étterem")));
-            addFutar(newDocument, rootElement, getFutar(document.getElementsByTagName("Futár")));
-            addRT(newDocument, rootElement, getRT(document.getElementsByTagName("RT")));
-            addTermek(newDocument, rootElement, getTermek(document.getElementsByTagName("Termék")));
-            addKartya(newDocument, rootElement, getKartya(document.getElementsByTagName("Bankkártya")));
-            addCim(newDocument, rootElement, getCim(document.getElementsByTagName("Cím")));
-            addVevo(newDocument, rootElement, getVevo(document.getElementsByTagName("Vevő")));
+            
+            //Rendelések hozzáadása a kommenttel
+            rootElement.appendChild(newDocument.createComment("Rendelések"));
+            addRendeles(newDocument, rootElement, "1","1","A kutya harap!","12:00","15000");
+            addRendeles(newDocument, rootElement, "2","1","","14:32","3000");
+            addRendeles(newDocument, rootElement, "3","2","Ételalergia","14:32","3700");
+            addRendeles(newDocument, rootElement, "4","3","Ételalergia","14:32","10000");
+            
+            //Éttermek hozzáadása a kommenttel
+            rootElement.appendChild(newDocument.createComment("Éttermek"));
+            addEtterem(newDocument, rootElement, "1","3528 Miskolc Csokonai Vitéz Mihály utca 40.","Hétfő 11:00-19:00,Kedd 11:00-19:00,Szerda 11:00-19:00,Péntek 11:00-19:00","csarda@etterem.hu");
+            addEtterem(newDocument, rootElement, "2","3525 Miskolc Szemere Bertalan Utca 3.","Hétfő 7:00-18:00,Kedd 7:00-18:00,Szerda 7:00-18:00,Csütörtök 7:00-18:00,Péntek 7:00-18:00,Szombat 8:00-18:00,Vasárnap 10:00-15:00","https://falankfanny.hu/");
+            addEtterem(newDocument, rootElement, "3","3526 Miskolc, Petőfi Tér 1.","Hétfő 8:00-23:00,Kedd 8:00-23:00,Szerda 8:00-23:00,Csütörtök 8:00-23:00,Péntek 8:00-23:00","http://www.barkafood.hu/");
+            
+            //Futárok hozzáadása a kommenttel
+            rootElement.appendChild(newDocument.createComment("Futárok"));
+            addFutar(newDocument, rootElement, "1","1","Nagy Milán","0630 320 4870","0","Biciklis");
+            addFutar(newDocument, rootElement, "2","1","Kovács Aladár","0630 560 8893","0","Autós");
+            addFutar(newDocument, rootElement, "3","1","Kiss Béla","0630 632 4856","1","Autós");
+            addFutar(newDocument, rootElement, "4","2","Varga Roland","0620 569 4236","1","Rolleres");
+            addFutar(newDocument, rootElement, "5","2","Kovács Péter","0646 329 4568","0","Biciklis");
+            addFutar(newDocument, rootElement, "6","3","Szabó Éva","0620 563 7821","1","Autós");
+            
+            //Több-több kapcsolat hozzáadása a kommenttel
+            rootElement.appendChild(newDocument.createComment("Rendelés - Termék kapcsolat"));
+            addRT(newDocument, rootElement, "1","1","1","Répa");
+            addRT(newDocument, rootElement, "1","3","4","");
+            addRT(newDocument, rootElement, "1","5","1","Porcukor");
+            addRT(newDocument, rootElement, "2","1","1","Zeller");
+            addRT(newDocument, rootElement, "2","5","1","Porcukor");
+            addRT(newDocument, rootElement, "3","2","5","Liszt,Vanília Kivonat");
+            addRT(newDocument, rootElement, "3","4","4","");
+            addRT(newDocument, rootElement, "4","5","5","Só,Porcukor,Tejföl");
+            
+            //Termékek hozzáadása a kommenttel
+            rootElement.appendChild(newDocument.createComment("Termékek"));
+            addTermek(newDocument, rootElement, "1","Húsleves","1000","30 perc","sárgarépa,fehérrépa,karalábé,zeller,vöröshagyma,paprika,petrezselyem,só,bors,tészta");
+            addTermek(newDocument, rootElement, "2","Brownie","500","15 perc","liszt,só,kakaópor,étcsokoládé,vaj,nutella,tojás,cukor,vanília kivonat");
+            addTermek(newDocument, rootElement, "3","Omlós libacomb","4000","130 perc","libacomb,tengeri só");
+            addTermek(newDocument, rootElement, "4","Muffin","300","30 perc","tojás,cukor,vaj,tej,liszt,só,sütőpor,vaníliás cukor");
+            addTermek(newDocument, rootElement, "5","Túrógombóc","2000","25 perc","túró,tojás,búzadara,só,szódabikarbóna,zsemlemorzsa,olaj,porcukor,tejföl");
+            
+            //Bankkártyák hozzáadása a kommenttel
+            rootElement.appendChild(newDocument.createComment("Bankkártyák"));
+            addKartya(newDocument, rootElement, "1174859659985563","1","Nyíri Levente","12/26","056","Mastercard");
+            addKartya(newDocument, rootElement, "1174859655585888","1","Nyíri Levente","05/28","356","Visa");
+            addKartya(newDocument, rootElement, "1174865851185111","1","Nyíri Levente","12/23","111","Mastercard");
+            addKartya(newDocument, rootElement, "1176834769216856","2","Nagyné Kovács Rebeka","12/23","111","Visa");
+            addKartya(newDocument, rootElement, "1179863452169933","2","Nagy Balázs","02/27","986","Visa");
+            addKartya(newDocument, rootElement, "1175453336278779","3","Kis István","01/29","494","Mastercard");
+            addKartya(newDocument, rootElement, "1171154896532478","4","Varga Iván","01/24","555","Visa");
+            
+            //Vevők hozzáadása a kommenttel, valamint a cím lérehozása és hozzáadása a vevőhöz
+            rootElement.appendChild(newDocument.createComment("Vevők"));
+            addVevo(newDocument, rootElement, "1","1","Nyíri Levente","0620 589 9938",addCim(newDocument, "3528","Csokonai Vitéz Mihály","utca","11",""));
+            addVevo(newDocument, rootElement, "2","2","Nagy Balázs","0630 597 6413",addCim(newDocument, "3535","Kuruc","utca","23","5/1"));
+            addVevo(newDocument, rootElement, "3","3","Kis István","0620 365 5876",addCim(newDocument, "3534","Nagy Lajos király","út","30",""));
+            addVevo(newDocument, rootElement, "4","4","Varga Iván","0630 879 1298",addCim(newDocument, "3531","Aba","utca","2","3/4"));
             
             
+            //Kiíratás fájlba és a konzolra
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
@@ -61,502 +107,248 @@ public class DOMWriteF023QC {
             System.out.println("Hiba történt: " + e.getMessage());
         }
     }
+	
+	//Függvények, amelyekkel új elemeket hozhatunk létre
+	
+	//Rendelés létrehozása
+	private static void addRendeles(Document document, Element rootElement,String rendelesID,String etteremID,String megjegyz,String ido,String ar) {
+		//Létrehozom a rendelést és beállítom az attribútumait
+		Element rendeles = document.createElement("Rendelés");
+		rendeles.setAttribute("rendelésID", rendelesID );
+		rendeles.setAttribute("étteremID", etteremID);
 		
-	private static void addRendeles(Document document, Element rootElement,ArrayList<Rendeles> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element rendeles = document.createElement("Rendelés");
-			rendeles.setAttribute("rendelésID", nodes.get(i).getRendelesID());
-			rendeles.setAttribute("étteremID", nodes.get(i).getEtteremID());
-			
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozott rendeléshez
+		
+		//A rendelésnek nem feltétlenül kell tartalmazi megjegyzést, ezért ha azt nem adunk meg, akkor nem hozunk létre gyerekelemet
+		if(!megjegyz.equalsIgnoreCase("")) {
 			Element megjegyzes = document.createElement("megjegyzés");
-			megjegyzes.setTextContent(nodes.get(i).getMegjegyzes());
+			megjegyzes.setTextContent(megjegyz);
 			rendeles.appendChild(megjegyzes);
-			
-			Element ideje = document.createElement("rendelés_ideje");
-			ideje.setTextContent(nodes.get(i).getRendelesI());
-			rendeles.appendChild(ideje);
-			
-			Element teljesar = document.createElement("teljes_ár");
-			teljesar.setTextContent(nodes.get(i).getTeljesAr());
-			rendeles.appendChild(teljesar);
-			
-			rootElement.appendChild(rendeles);
 		}
+
+		
+		Element ideje = document.createElement("rendelés_ideje");
+		ideje.setTextContent(ido);
+		rendeles.appendChild(ideje);
+		
+		Element teljesar = document.createElement("teljes_ár");
+		teljesar.setTextContent(ar);
+		rendeles.appendChild(teljesar);
+		
+		//Hozzáadjuk a rendelést a gyökérelemhez
+		rootElement.appendChild(rendeles);
 	}
 	
-	private static void addEtterem(Document document, Element rootElement,ArrayList<Etterem> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element etterem = document.createElement("Étterem");
-			etterem.setAttribute("étteremID", nodes.get(i).getEtteremID());
-			
-			Element cim = document.createElement("cím");
-			cim.setTextContent(nodes.get(i).getCim());
-			etterem.appendChild(cim);
-			for(int j = 0;j<nodes.get(i).getNyitvatartas().size();j++) {
-				Element nyitva = document.createElement("nyitvatartás");
-				nyitva.setTextContent(nodes.get(i).getNyitvatartas().get(j));
-				etterem.appendChild(nyitva);
-			}
-			
-			Element elerhetoseg = document.createElement("elérhetőség");
-			elerhetoseg.setTextContent(nodes.get(i).getElerhetoseg());
-			etterem.appendChild(elerhetoseg);
-			
-			
-			rootElement.appendChild(etterem);
+	//Étterem létrehozása
+	private static void addEtterem(Document document, Element rootElement,String etteremID,String cimin,String nyitva,String elerhet) {
+		//Létrehozom az éttermet és beállítom az attribútumait
+		Element etterem = document.createElement("Étterem");
+		etterem.setAttribute("étteremID", etteremID);
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozot étteremhez
+		Element cim = document.createElement("cím");
+		cim.setTextContent(cimin);
+		etterem.appendChild(cim);
+		
+		//A nyitvatartás többször is előfordulhat az étterem elemben Stringként adom meg ,-vel elválasztva, ezért először listává alakítom
+		List<String> nyitvatartasok = new ArrayList<String>(Arrays.asList(nyitva.split(",")));
+		
+		//Végigmegyek a listán, és az értékeknek megfelelően létrehozom a nyitvatartást
+		for (String string : nyitvatartasok) {
+			Element nyitvat = document.createElement("nyitvatartás");
+			nyitvat.setTextContent(string);
+			etterem.appendChild(nyitvat);
 		}
+		
+		Element elerhetoseg = document.createElement("elérhetőség");
+		elerhetoseg.setTextContent(elerhet);
+		etterem.appendChild(elerhetoseg);
+		
+		//Hozzáadom az éttermet a gyökérelemhez
+		rootElement.appendChild(etterem);
 	}
 	
-	private static void addFutar(Document document, Element rootElement,ArrayList<Futar> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element futar = document.createElement("Futár");
-			futar.setAttribute("futárID", nodes.get(i).getFutarID());
-			futar.setAttribute("étteremID", nodes.get(i).getEtteremID());
-			
-			
-			Element nev = document.createElement("név");
-			nev.setTextContent(nodes.get(i).getNev());
-			futar.appendChild(nev);
-			
-			Element tel = document.createElement("telefonszám");
-			tel.setTextContent(nodes.get(i).getTelefonszam());
-			futar.appendChild(tel);
-			
-			Element elerheto = document.createElement("elérhető");
-			elerheto.setTextContent(nodes.get(i).getElerheto());
-			futar.appendChild(elerheto);
-			
-			Element tipus = document.createElement("típus");
-			tipus.setTextContent(nodes.get(i).getTipus());
-			futar.appendChild(tipus);
-			
-			rootElement.appendChild(futar);
-		}
+	//Futár létrehozása
+	private static void addFutar(Document document, Element rootElement,String futarID,String etteremID,String nevin,String telefon,String elerhet,String tip) {
+		//Létrehozom a futárt és beállítom az attribútumait
+		Element futar = document.createElement("Futár");
+		futar.setAttribute("futárID", futarID);
+		futar.setAttribute("étteremID", etteremID);
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozott futárhoz
+		Element nev = document.createElement("név");
+		nev.setTextContent(nevin);
+		futar.appendChild(nev);
+		
+		Element tel = document.createElement("telefonszám");
+		tel.setTextContent(telefon);
+		futar.appendChild(tel);
+		
+		Element elerheto = document.createElement("elérhető");
+		elerheto.setTextContent(elerhet);
+		futar.appendChild(elerheto);
+		
+		Element tipus = document.createElement("típus");
+		tipus.setTextContent(tip);
+		futar.appendChild(tipus);
+		
+		//hozzáadom a futárt a gyökérelemhez
+		rootElement.appendChild(futar);
 	}
-	private static void addRT(Document document, Element rootElement,ArrayList<RT> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element rt = document.createElement("RT");
-			rt.setAttribute("rendelésID", nodes.get(i).getRendelesID());
-			rt.setAttribute("termékID", nodes.get(i).getTermekID());
+	
+	//N:M kapcsolat létrehozása
+	private static void addRT(Document document, Element rootElement,String rendelesID,String termekID,String mennyiseg,String NK) {
+		//Létrehozom a kapcsolat elemét és beállítom az attribútumait ezek alapján lehet beazonosítani, hogy melyik rendelésben milyen termék szerepel
+		Element rt = document.createElement("RT");
+		rt.setAttribute("rendelésID", rendelesID);
+		rt.setAttribute("termékID", termekID);
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozott RT kapcsolathoz
+		Element menny = document.createElement("mennyiség");
+		menny.setTextContent(mennyiseg);
+		rt.appendChild(menny);
+		
+		//A nem kívánt összetevő olyan gyerekelem, amelynek nincs megszabva, hogy hányszor fordulhat elő,(0,1,2,3...) ezért először ellenőrzöm, hogy aakarunk e hozzáadni ilyen gyerekelemet az RT-hez
+		if(!NK.equalsIgnoreCase("")) {
+			//Ha akarunk, akkor a ,-k mentén listává alakítom, majd végigmegyek az értékekenés létrehozom a gyerekelemeket
+			List<String> nkk = new ArrayList<String>(Arrays.asList(NK.split(",")));
 			
-			Element menny = document.createElement("mennyiség");
-			menny.setTextContent(nodes.get(i).getMennyiseg());
-			rt.appendChild(menny);
-			
-			for(int j = 0;j<nodes.get(i).getNk_osszetevo().size();j++) {
+			for (String string : nkk) {
 				Element nk = document.createElement("nk_összetevő");
-				nk.setTextContent(nodes.get(i).getNk_osszetevo().get(j));
+				nk.setTextContent(string);
 				rt.appendChild(nk);
 			}
-			
-
-			
-			
-			rootElement.appendChild(rt);
 		}
+		
+
+		//hozzáadom a gyökérelemhez
+		rootElement.appendChild(rt);
 	}
 	
-	private static void addTermek(Document document, Element rootElement,ArrayList<Termek> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element termek = document.createElement("Termék");
-			termek.setAttribute("termékID", nodes.get(i).getTermekID());
-			
-			Element nev = document.createElement("név");
-			nev.setTextContent(nodes.get(i).getNev());
-			termek.appendChild(nev);
-			
-			Element ar = document.createElement("ár");
-			ar.setTextContent(nodes.get(i).getAr());
-			termek.appendChild(ar);
-			
-			Element ido = document.createElement("elkészítési_idő");
-			ido.setTextContent(nodes.get(i).getElkeszitesiI());
-			termek.appendChild(ido);
-			
-			System.out.println(nodes.get(i).getOsszetevok().size());
-			for(int j = 0;j<nodes.get(i).getOsszetevok().size();j++) {
-				Element osszetevo = document.createElement("összetevők");
-				osszetevo.setTextContent(nodes.get(i).getOsszetevok().get(j));
-				termek.appendChild(osszetevo);
-			}
-
-			rootElement.appendChild(termek);
+	//Termék létrehozása
+	private static void addTermek(Document document, Element rootElement,String termekID,String neve,String ara,String elkido,String ossze) {
+		//Létrehozom a terméket és beállítom az attribútumait
+		Element termek = document.createElement("Termék");
+		termek.setAttribute("termékID", termekID);
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozott termékhez
+		Element nev = document.createElement("név");
+		nev.setTextContent(neve);
+		termek.appendChild(nev);
+		
+		Element ar = document.createElement("ár");
+		ar.setTextContent(ara);
+		termek.appendChild(ar);
+		
+		Element ido = document.createElement("elkészítési_idő");
+		ido.setTextContent(elkido);
+		termek.appendChild(ido);
+		
+		//Az összetevő többször is előfordulhat a termék elemben Stringként adom meg ,-vel elválasztva, ezért először listává alakítom
+		List<String> osszetevok = new ArrayList<String>(Arrays.asList(ossze.split(",")));
+		
+		//Ezután az értékeknek megfelelően létrehozom az elemeket
+		for (String string : osszetevok) {
+			Element osszetevo = document.createElement("összetevők");
+			osszetevo.setTextContent(string);
+			termek.appendChild(osszetevo);
 		}
+		
+		//Hozzáadom a gyökérelemhez
+		rootElement.appendChild(termek);
 	}
 	
-	private static void addKartya(Document document, Element rootElement,ArrayList<Bankkartya> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element kartya = document.createElement("Bankkártya");
-			kartya.setAttribute("kártyaszám", nodes.get(i).getKartyaszam());
-			kartya.setAttribute("vevőID", nodes.get(i).getVevoId());
-			
-			Element nev = document.createElement("kártyán_szereplő_név");
-			nev.setTextContent(nodes.get(i).getKartyanSzereploNev());
-			kartya.appendChild(nev);
-			
-			Element datum = document.createElement("lejárati_dátum");
-			datum.setTextContent(nodes.get(i).getLejaratiDatum());
-			kartya.appendChild(datum);
-			
-			Element kod = document.createElement("biztonsági_kód");
-			kod.setTextContent(nodes.get(i).getBiztonsagiKod());
-			kartya.appendChild(kod);
-			
-			Element tipus = document.createElement("típus");
-			tipus.setTextContent(nodes.get(i).getTipus());
-			kartya.appendChild(tipus);
-			
-			
-
-			rootElement.appendChild(kartya);
-		}
-	}
-	private static void addCim(Document document, Element rootElement,ArrayList<Cim> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element cim = document.createElement("Cím");
-			cim.setAttribute("vevőID", nodes.get(i).getVevoId());
-			
-			Element irszam = document.createElement("irányítószám");
-			irszam.setTextContent(nodes.get(i).getIranyitoszam());
-			cim.appendChild(irszam);
-			
-			Element neve = document.createElement("közterület_neve");
-			neve.setTextContent(nodes.get(i).getKozTNeve());
-			cim.appendChild(neve);
-			
-			Element megnevezes = document.createElement("közterület_megnevezése");
-			megnevezes.setTextContent(nodes.get(i).getKozTMegnev());
-			cim.appendChild(megnevezes);
-			
-			Element hazszam = document.createElement("házszám");
-			hazszam.setTextContent(nodes.get(i).getHazszam());
-			cim.appendChild(hazszam);
-			
-			if(nodes.get(i).getEmeletAjto()!= null) {
-				Element ajto = document.createElement("emelet_ajtó");
-				ajto.setTextContent(nodes.get(i).getEmeletAjto());
-				cim.appendChild(ajto);
-			}
-			
-
-			
-			
-
-			rootElement.appendChild(cim);
-		}
+	
+	//Kártya létrehozása
+	private static void addKartya(Document document, Element rootElement,String szam,String vevoID,String nevin,String lejaratidatum,String biztkod,String tip) {
+		//Létrehozom a kártyát és beállítom az attribútumait
+		Element kartya = document.createElement("Bankkártya");
+		kartya.setAttribute("kártyaszám", szam);
+		kartya.setAttribute("vevőID", vevoID);
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozott kártyához
+		Element nev = document.createElement("kártyán_szereplő_név");
+		nev.setTextContent(nevin);
+		kartya.appendChild(nev);
+		
+		Element datum = document.createElement("lejárati_dátum");
+		datum.setTextContent(lejaratidatum);
+		kartya.appendChild(datum);
+		
+		Element kod = document.createElement("biztonsági_kód");
+		kod.setTextContent(biztkod);
+		kartya.appendChild(kod);
+		
+		Element tipus = document.createElement("típus");
+		tipus.setTextContent(tip);
+		kartya.appendChild(tipus);
+		
+		
+		//Hozzáadom a kártyát a gyokérelemhez
+		rootElement.appendChild(kartya);
 	}
 	
-	private static void addVevo(Document document, Element rootElement,ArrayList<Vevo> nodes) {
-		for(int i =0;i<nodes.size();i++) {
-			Element vevo = document.createElement("Vevő");
-			vevo.setAttribute("vevőID", nodes.get(i).getVevoId());
-			vevo.setAttribute("rendelésID", nodes.get(i).getRendelesId());
-			
-			Element nev = document.createElement("név");
-			nev.setTextContent(nodes.get(i).getNev());
-			vevo.appendChild(nev);
-			
-			Element tel = document.createElement("telefonszám");
-			tel.setTextContent(nodes.get(i).getTelefonszam());
-			vevo.appendChild(tel);
-
-			rootElement.appendChild(vevo);
+	//Cím létrehozása
+	//Nem void a visszatérési érték, hanem Node, mivel ezt majd hozzá fogjuk adni a vevőhöz
+	private static Node addCim(Document document,String iranyszam,String kneve,String kmegnev,String hazsz,String emelet) {
+		//Létrehozom a címet, ezzel fogok visszatérni
+		Element cim = document.createElement("cím");
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket
+		Element irszam = document.createElement("irányítószám");
+		irszam.setTextContent(iranyszam);
+		cim.appendChild(irszam);
+		
+		Element neve = document.createElement("közterület_neve");
+		neve.setTextContent(kneve);
+		cim.appendChild(neve);
+		
+		Element megnevezes = document.createElement("közterület_megnevezése");
+		megnevezes.setTextContent(kmegnev);
+		cim.appendChild(megnevezes);
+		
+		Element hazszam = document.createElement("házszám");
+		hazszam.setTextContent(hazsz);
+		cim.appendChild(hazszam);
+		
+		//Nem biztos,hogy a címben szerepel, hogy emelet/ajtó, ezért leellenőrzöm
+		if(!emelet.equalsIgnoreCase("")) {
+			Element ajto = document.createElement("emelet_ajtó");
+			ajto.setTextContent(emelet);
+			cim.appendChild(ajto);
 		}
+		
+
+		//Visszatérek a Node-al
+		return cim;
+
+		
 	}
 	
-	private static ArrayList<Rendeles> getRendeles(NodeList nodes) {
-		ArrayList<Rendeles> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Rendeles rendeles = new Rendeles();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			rendeles.setRendelesID(attributes.getNamedItem("rendelésID").getTextContent());
-			rendeles.setEtteremID(attributes.getNamedItem("étteremID").getTextContent());
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					
-					if(childs.item(j).getNodeName().equalsIgnoreCase("megjegyzés")) {
-						rendeles.setMegjegyzes(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("rendelés_ideje")) {
-						rendeles.setRendelesI(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("teljes_ár")) {
-						rendeles.setTeljesAr(childs.item(j).getTextContent());
-					}
-				}
-			}
-			
-			ret.add(rendeles);
-			
-			
-		}
-		return ret;
+	//Vevő létrehozása
+	//A cím itt már Node-ként jön át, így azt csak hozzá kell adnunk a vevőhöz
+	private static void addVevo(Document document, Element rootElement,String vevoID,String rendelesID,String neve,String telefon,Node cimin) {
+		//Létrehozom a vevőt és beállítom az attribútumait
+		Element vevo = document.createElement("Vevő");
+		vevo.setAttribute("vevőID", vevoID);
+		vevo.setAttribute("rendelésID", rendelesID);
+		
+		//Létrhozom a gyerekelemeket, majd beállítom a nevüket, ezután beállítom az értéküket, majd hozzáadom az újonnan létrehozott vevőhöz
+		Element nev = document.createElement("név");
+		nev.setTextContent(neve);
+		vevo.appendChild(nev);
+		
+		Element tel = document.createElement("telefonszám");
+		tel.setTextContent(telefon);
+		vevo.appendChild(tel);
+		
+		//Hozzáadom a címet a vevőhöz
+		vevo.appendChild(cimin);
+		
+		//Hozzáadom a vevőt a gyökérelemhez
+		rootElement.appendChild(vevo);
 	}
 	
-	private static ArrayList<Etterem> getEtterem(NodeList nodes) {
-		ArrayList<Etterem> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Etterem etterem = new Etterem();
-			ArrayList<String> nyitvatartasok = new ArrayList<String>();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			etterem.setEtteremID(attributes.getNamedItem("étteremID").getTextContent());
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					if(childs.item(j).getNodeName().equalsIgnoreCase("cím")) {
-						etterem.setCim(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("nyitvatartás")) {
-						nyitvatartasok.add(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("elérhetőség")) {
-						etterem.setElerhetoseg(childs.item(j).getTextContent());
-					}
-				}
-			}
-			
-			etterem.setNyitvatartas(nyitvatartasok);
-			ret.add(etterem);
-			
-			
-		}
-		return ret;
-	}
-	
-	private static ArrayList<Futar> getFutar(NodeList nodes) {
-		ArrayList<Futar> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Futar futar = new Futar();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			futar.setEtteremID(attributes.getNamedItem("étteremID").getTextContent());
-			futar.setFutarID(attributes.getNamedItem("futárID").getTextContent());
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					
-					if(childs.item(j).getNodeName().equalsIgnoreCase("név")) {
-						futar.setNev(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("telefonszám")) {
-						futar.setTelefonszam(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("elérhető")) {
-						futar.setElerheto(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("típus")) {
-						futar.setTipus(childs.item(j).getTextContent());
-					}
-
-				}
-			}
-			
-			ret.add(futar);
-			
-			
-		}
-		return ret;
-	}
-	
-	private static ArrayList<RT> getRT(NodeList nodes) {
-		ArrayList<RT> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			RT rt = new RT();
-			ArrayList<String> nkosszetevok = new ArrayList<String>();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			rt.setRendelesID(attributes.getNamedItem("rendelésID").getTextContent());
-			rt.setTermekID(attributes.getNamedItem("termékID").getTextContent());
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					if(childs.item(j).getNodeName().equalsIgnoreCase("mennyiség")) {
-						rt.setMennyiseg(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("nk_összetevő")) {
-						nkosszetevok.add(childs.item(j).getTextContent());
-					}
-
-				}
-			}
-			
-			rt.setNk_osszetevo(nkosszetevok);
-			ret.add(rt);
-			
-			
-		}
-		return ret;
-	}
-	
-	private static ArrayList<Termek> getTermek(NodeList nodes) {
-		ArrayList<Termek> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Termek termek = new Termek();
-			ArrayList<String> osszetevok = new ArrayList<String>();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			termek.setTermekID(attributes.getNamedItem("termékID").getTextContent());
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					if(childs.item(j).getNodeName().equalsIgnoreCase("név")) {
-						termek.setNev(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("ár")) {
-						termek.setAr(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("elkészítési_idő")) {
-						termek.setElkeszitesiI(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("összetevők")) {
-						osszetevok.add(childs.item(j).getTextContent());
-					}
-
-				}
-			}
-			
-			termek.setOsszetevok(osszetevok);
-			ret.add(termek);
-			
-			
-		}
-		return ret;
-	}
-	
-	private static ArrayList<Bankkartya> getKartya(NodeList nodes) {
-		ArrayList<Bankkartya> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Bankkartya bankkartya = new Bankkartya();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			bankkartya.setKartyaszam(attributes.getNamedItem("kártyaszám").getTextContent());
-			bankkartya.setVevoId(attributes.getNamedItem("vevőID").getTextContent());
-
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					
-					if(childs.item(j).getNodeName().equalsIgnoreCase("kártyán_szereplő_név")) {
-						bankkartya.setKartyanSzereploNev(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("lejárati_dátum")) {
-						bankkartya.setLejaratiDatum(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("biztonsági_kód")) {
-						bankkartya.setBiztonsagiKod(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("típus")) {
-						bankkartya.setTipus(childs.item(j).getTextContent());
-					}
-
-				}
-			}
-			
-			ret.add(bankkartya);
-			
-			
-		}
-		return ret;
-	}
-	
-	private static ArrayList<Cim> getCim(NodeList nodes) {
-		ArrayList<Cim> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Cim cim = new Cim();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			cim.setVevoId(attributes.getNamedItem("vevőID").getTextContent());
-
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					
-					if(childs.item(j).getNodeName().equalsIgnoreCase("irányítószám")) {
-						cim.setIranyitoszam(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("közterület_neve")) {
-						cim.setKozTNeve(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("közterület_megnevezése")) {
-						cim.setKozTMegnev(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("házszám")) {
-						cim.setHazszam(childs.item(j).getTextContent());
-
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("emelet_ajtó")) {
-						cim.setEmeletAjto(childs.item(j).getTextContent());
-					}
-
-				}
-			}
-			
-			ret.add(cim);
-			
-			
-		}
-		return ret;
-	}
-	
-	private static ArrayList<Vevo> getVevo(NodeList nodes) {
-		ArrayList<Vevo> ret = new ArrayList<>();
-		for(int i =0; i<nodes.getLength();i++) {
-			Vevo vevo = new Vevo();
-			
-			NamedNodeMap attributes = nodes.item(i).getAttributes();
-			vevo.setVevoId(attributes.getNamedItem("vevőID").getTextContent());
-			vevo.setRendelesId(attributes.getNamedItem("rendelésID").getTextContent());
-
-			
-			
-			NodeList childs = nodes.item(i).getChildNodes();
-			
-			for(int j =0; j<childs.getLength();j++) {
-				if(childs.item(j).getNodeType()==Node.ELEMENT_NODE) {
-					
-					if(childs.item(j).getNodeName().equalsIgnoreCase("név")) {
-						vevo.setNev(childs.item(j).getTextContent());
-					}
-					if(childs.item(j).getNodeName().equalsIgnoreCase("telefonszám")) {
-						vevo.setTelefonszam(childs.item(j).getTextContent());
-					}
-
-				}
-			}
-			
-			ret.add(vevo);
-			
-			
-		}
-		return ret;
-	}
 
 }
 

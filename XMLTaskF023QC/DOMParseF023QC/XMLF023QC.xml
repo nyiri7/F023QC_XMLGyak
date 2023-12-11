@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<F023QC_rendelesek xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="XMLSchemaF023QC.xsd">
-    <Rendelés rendelésID ="1" étteremID="1">
+<F023QC_rendelesek xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XMLSchemaF023QC.xsd">
+    <!--Rendelések-->
+    <Rendelés rendelésID="1" étteremID="1">
         <megjegyzés>A kutya harap!</megjegyzés>
         <rendelés_ideje>12:00</rendelés_ideje>
         <teljes_ár>15000</teljes_ár>
     </Rendelés>
-    <Rendelés rendelésID ="2" étteremID="1">
+    <Rendelés rendelésID="2" étteremID="1">
         <rendelés_ideje>14:32</rendelés_ideje>
         <teljes_ár>3000</teljes_ár>
     </Rendelés>
-    <Rendelés rendelésID ="3" étteremID="2">
+    <Rendelés rendelésID="3" étteremID="2">
         <megjegyzés>Ételalergia</megjegyzés>
         <rendelés_ideje>14:32</rendelés_ideje>
         <teljes_ár>3700</teljes_ár>
     </Rendelés>
-    <Rendelés rendelésID ="4" étteremID="3">
+    <Rendelés rendelésID="4" étteremID="3">
         <megjegyzés>Ételalergia</megjegyzés>
         <rendelés_ideje>14:32</rendelés_ideje>
         <teljes_ár>10000</teljes_ár>
     </Rendelés>
-    <!-- Éttermek -->
+    <!--Éttermek-->
     <Étterem étteremID="1">
         <cím>3528 Miskolc Csokonai Vitéz Mihály utca 40.</cím>
+        <nyitvatartás>Hétfő 11:00-19:00</nyitvatartás>
         <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
-        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
-        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
-        <nyitvatartás>Kedd 11:00-19:00</nyitvatartás>
+        <nyitvatartás>Szerda 11:00-19:00</nyitvatartás>
+        <nyitvatartás>Péntek 11:00-19:00</nyitvatartás>
         <elérhetőség>csarda@etterem.hu</elérhetőség>
     </Étterem>
     <Étterem étteremID="2">
@@ -50,7 +49,7 @@
         <nyitvatartás>Péntek 8:00-23:00</nyitvatartás>
         <elérhetőség>http://www.barkafood.hu/</elérhetőség>
     </Étterem>
-    <!-- Futárok -->
+    <!--Futárok-->
     <Futár futárID="1" étteremID="1">
         <név>Nagy Milán</név>
         <telefonszám>0630 320 4870</telefonszám>
@@ -87,7 +86,7 @@
         <elérhető>1</elérhető>
         <típus>Autós</típus>
     </Futár>
-    <!-- Rendelés-termék kapcsolat -->
+    <!--Rendelés - Termék kapcsolat-->
     <RT rendelésID="1" termékID="1">
         <mennyiség>1</mennyiség>
         <nk_összetevő>Répa</nk_összetevő>
@@ -107,7 +106,6 @@
         <mennyiség>1</mennyiség>
         <nk_összetevő>Porcukor</nk_összetevő>
     </RT>
-
     <RT rendelésID="3" termékID="2">
         <mennyiség>5</mennyiség>
         <nk_összetevő>Liszt</nk_összetevő>
@@ -122,7 +120,7 @@
         <nk_összetevő>Porcukor</nk_összetevő>
         <nk_összetevő>Tejföl</nk_összetevő>
     </RT>
-    <!-- Termékek -->
+    <!--Termékek-->
     <Termék termékID="1">
         <név>Húsleves</név>
         <ár>1000</ár>
@@ -186,7 +184,7 @@
         <összetevők>porcukor</összetevők>
         <összetevők>tejföl</összetevők>
     </Termék>
-    <!-- Bankkártyák -->
+    <!--Bankkártyák-->
     <Bankkártya kártyaszám="1174859659985563" vevőID="1">
         <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
         <lejárati_dátum>12/26</lejárati_dátum>
@@ -229,48 +227,47 @@
         <biztonsági_kód>555</biztonsági_kód>
         <típus>Visa</típus>
     </Bankkártya>
-    <!-- Címek -->
-    <Cím vevőID="1">
-        <irányítószám>3528</irányítószám>
-        <közterület_neve>Csokonai Vitéz Mihály</közterület_neve>
-        <közterület_megnevezése>utca</közterület_megnevezése>
-        <házszám>11</házszám>
-    </Cím>
-    <Cím vevőID="2">
-        <irányítószám>3535</irányítószám>
-        <közterület_neve>Kuruc</közterület_neve>
-        <közterület_megnevezése>utca</közterület_megnevezése>
-        <házszám>23</házszám>
-        <emelet_ajtó>5/1</emelet_ajtó>
-    </Cím>
-    <Cím vevőID="3">
-        <irányítószám>3534</irányítószám>
-        <közterület_neve>Nagy Lajos király</közterület_neve>
-        <közterület_megnevezése>út</közterület_megnevezése>
-        <házszám>30</házszám>
-    </Cím>
-    <Cím vevőID="4">
-        <irányítószám>3531</irányítószám>
-        <közterület_neve>Aba</közterület_neve>
-        <közterület_megnevezése>utca</közterület_megnevezése>
-        <házszám>2</házszám>
-        <emelet_ajtó>3/4</emelet_ajtó>
-    </Cím>
-    <!-- Vevők -->
-    <Vevő vevőID="1" rendelésID="1">
+    <!--Vevők-->
+    <Vevő rendelésID="1" vevőID="1">
         <név>Nyíri Levente</név>
         <telefonszám>0620 589 9938</telefonszám>
+        <cím>
+            <irányítószám>3528</irányítószám>
+            <közterület_neve>Csokonai Vitéz Mihály</közterület_neve>
+            <közterület_megnevezése>utca</közterület_megnevezése>
+            <házszám>11</házszám>
+        </cím>
     </Vevő>
-    <Vevő vevőID="2" rendelésID="2">
+    <Vevő rendelésID="2" vevőID="2">
         <név>Nagy Balázs</név>
         <telefonszám>0630 597 6413</telefonszám>
+        <cím>
+            <irányítószám>3535</irányítószám>
+            <közterület_neve>Kuruc</közterület_neve>
+            <közterület_megnevezése>utca</közterület_megnevezése>
+            <házszám>23</házszám>
+            <emelet_ajtó>5/1</emelet_ajtó>
+        </cím>
     </Vevő>
-    <Vevő vevőID="3" rendelésID="3">
+    <Vevő rendelésID="3" vevőID="3">
         <név>Kis István</név>
         <telefonszám>0620 365 5876</telefonszám>
+        <cím>
+            <irányítószám>3534</irányítószám>
+            <közterület_neve>Nagy Lajos király</közterület_neve>
+            <közterület_megnevezése>út</közterület_megnevezése>
+            <házszám>30</házszám>
+        </cím>
     </Vevő>
-    <Vevő vevőID="4" rendelésID="4">
+    <Vevő rendelésID="4" vevőID="4">
         <név>Varga Iván</név>
         <telefonszám>0630 879 1298</telefonszám>
+        <cím>
+            <irányítószám>3531</irányítószám>
+            <közterület_neve>Aba</közterület_neve>
+            <közterület_megnevezése>utca</közterület_megnevezése>
+            <házszám>2</házszám>
+            <emelet_ajtó>3/4</emelet_ajtó>
+        </cím>
     </Vevő>
 </F023QC_rendelesek>
