@@ -30,7 +30,7 @@
         <elérhetőség>csarda@etterem.hu</elérhetőség>
     </Étterem>
     <Étterem étteremID="2">
-        <cím>3525 Miskolc Szemere Bertalan Utca 12.</cím>
+        <cím>3525 Miskolc Szemere Bertalan Utca 3.</cím>
         <nyitvatartás>Hétfő 7:00-18:00</nyitvatartás>
         <nyitvatartás>Kedd 7:00-18:00</nyitvatartás>
         <nyitvatartás>Szerda 7:00-18:00</nyitvatartás>
@@ -53,7 +53,7 @@
     <Futár futárID="1" étteremID="1">
         <név>Nagy Milán</név>
         <telefonszám>0630 320 4870</telefonszám>
-        <elérhető>1</elérhető>
+        <elérhető>0</elérhető>
         <típus>Biciklis</típus>
     </Futár>
     <Futár futárID="2" étteremID="1">
@@ -95,7 +95,7 @@
         <mennyiség>4</mennyiség>
     </RT>
     <RT rendelésID="1" termékID="5">
-        <mennyiség>2</mennyiség>
+        <mennyiség>1</mennyiség>
         <nk_összetevő>Porcukor</nk_összetevő>
     </RT>
     <RT rendelésID="2" termékID="1">
@@ -189,19 +189,19 @@
         <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
         <lejárati_dátum>12/26</lejárati_dátum>
         <biztonsági_kód>056</biztonsági_kód>
-        <típus>MasterCard</típus>
+        <típus>Mastercard</típus>
     </Bankkártya>
     <Bankkártya kártyaszám="1174859655585888" vevőID="1">
         <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
         <lejárati_dátum>05/28</lejárati_dátum>
         <biztonsági_kód>356</biztonsági_kód>
-        <típus>MasterCard</típus>
+        <típus>Visa</típus>
     </Bankkártya>
     <Bankkártya kártyaszám="1174865851185111" vevőID="1">
         <kártyán_szereplő_név>Nyíri Levente</kártyán_szereplő_név>
         <lejárati_dátum>12/23</lejárati_dátum>
         <biztonsági_kód>111</biztonsági_kód>
-        <típus>MasterCard</típus>
+        <típus>Mastercard</típus>
     </Bankkártya>
     <Bankkártya kártyaszám="1176834769216856" vevőID="2">
         <kártyán_szereplő_név>Nagyné Kovács Rebeka</kártyán_szereplő_név>
@@ -235,7 +235,7 @@
             <irányítószám>3528</irányítószám>
             <közterület_neve>Csokonai Vitéz Mihály</közterület_neve>
             <közterület_megnevezése>utca</közterület_megnevezése>
-            <házszám>22</házszám>
+            <házszám>11</házszám>
         </cím>
     </Vevő>
     <Vevő rendelésID="2" vevőID="2">

@@ -98,7 +98,7 @@ public class DOMWriteF023QC {
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{https://xml.apache.org/xslt}indent-amount", "4");
-            FileWriter fileWriter = new FileWriter("XMLF023QC1.xml");
+            FileWriter fileWriter = new FileWriter("XMLF023QC2.xml");
             transformer.transform(new DOMSource(newDocument), new StreamResult(fileWriter));
 	        transformer.transform(new DOMSource(newDocument), new StreamResult(System.out));
 
